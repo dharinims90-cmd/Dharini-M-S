@@ -1,0 +1,2724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfolio of a Software Engineer specializing in modern web development, scalable cloud architectures, and user-centric applications.">
+  <meta name="author" content="Software Engineer">
+  <title>Dharini M S | Software Engineer Portfolio</title>
+
+  <!-- Google Fonts: Inter & Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ========================================================================= -->
+  <!-- ACCESSIBILITY: SKIP TO CONTENT LINK                                       -->
+  <!-- ========================================================================= -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- ========================================================================= -->
+  <!-- MOBILE NAV BACKDROP OVERLAY                                               -->
+  <!-- ========================================================================= -->
+  <div id="nav-overlay" class="nav-overlay" aria-hidden="true"></div>
+
+  <!-- ========================================================================= -->
+  <!-- VERTICAL SIDEBAR NAVIGATION (LEFT SIDE)                                  -->
+  <!-- ========================================================================= -->
+  <!-- 
+    Vertical Navigation Bar:
+    - Docked on the left side of the screen on desktop with glassmorphism anime aesthetic.
+    - Responsive: Transforms into an accessible slide-in drawer on tablet/mobile screens.
+    - Includes links for: 'Home', 'About Me', 'Skills', 'Timeline', 'Projects', 
+      'Testimonials', 'Chat', and 'Contact'.
+    - Fully accessible with ARIA attributes, keyboard navigation, and scroll spy.
+  -->
+  <aside id="vertical-navbar" class="anime-vertical-nav" aria-label="Main Sidebar Navigation">
+    <div class="vnav-inner">
+
+      <!-- Sidebar Header / Brand Crest -->
+      <div class="vnav-header">
+        <a href="#hero" class="vnav-brand" aria-label="DevName Home">
+          <div class="vnav-crest-badge">
+            <span class="crest-emoji">🌸</span>
+            <span class="crest-glow" aria-hidden="true"></span>
+          </div>
+          <div class="vnav-brand-text">
+            <span class="vnav-brand-title">Dharini M S</span>
+            <span class="vnav-brand-tag">PORTAL // 起点</span>
+          </div>
+        </a>
+        <button id="vnav-close-btn" class="vnav-close-btn" type="button" aria-label="Close sidebar menu">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <!-- Vertical Navigation Menu with 8 required links -->
+      <nav class="vnav-menu" aria-label="Vertical Section Links">
+        <ul class="vnav-list" role="menubar">
+          <li class="vnav-item" role="none">
+            <a href="#hero" class="vnav-link active" data-section="hero" role="menuitem" aria-current="page">
+              <span class="vnav-icon" aria-hidden="true">⛩️</span>
+              <span class="vnav-text">Home</span>
+              <span class="vnav-kanji">起点</span>
+              <span class="vnav-glow-pill" aria-hidden="true"></span>
+            </a>
+          </li>
+          <li class="vnav-item" role="none">
+            <a href="#about" class="vnav-link" data-section="about" role="menuitem">
+              <span class="vnav-icon" aria-hidden="true">🔮</span>
+              <span class="vnav-text">About Me</span>
+              <span class="vnav-kanji">自己</span>
+              <span class="vnav-glow-pill" aria-hidden="true"></span>
+            </a>
+          </li>
+          <li class="vnav-item" role="none">
+            <a href="#skills" class="vnav-link" data-section="skills" role="menuitem">
+              <span class="vnav-icon" aria-hidden="true">⚡</span>
+              <span class="vnav-text">Skills</span>
+              <span class="vnav-kanji">技術</span>
+              <span class="vnav-glow-pill" aria-hidden="true"></span>
+            </a>
+          </li>
+          <li class="vnav-item" role="none">
+            <a href="#timeline" class="vnav-link" data-section="timeline" role="menuitem">
+              <span class="vnav-icon" aria-hidden="true">📜</span>
+              <span class="vnav-text">Timeline</span>
+              <span class="vnav-kanji">年表</span>
+              <span class="vnav-glow-pill" aria-hidden="true"></span>
+            </a>
+          </li>
+          <li class="vnav-item" role="none">
+            <a href="#projects" class="vnav-link" data-section="projects" role="menuitem">
+              <span class="vnav-icon" aria-hidden="true">⚔️</span>
+              <span class="vnav-text">Projects</span>
+              <span class="vnav-kanji">成果</span>
+              <span class="vnav-glow-pill" aria-hidden="true"></span>
+            </a>
+          </li>
+          <li class="vnav-item" role="none">
+            <a href="#video" class="vnav-link" data-section="video" role="menuitem">
+              <span class="vnav-icon" aria-hidden="true">🎬</span>
+              <span class="vnav-text">Video</span>
+              <span class="vnav-kanji">動画</span>
+              <span class="vnav-glow-pill" aria-hidden="true"></span>
+            </a>
+          </li>
+          <li class="vnav-item" role="none">
+            <a href="#testimonials" class="vnav-link" data-section="testimonials" role="menuitem">
+              <span class="vnav-icon" aria-hidden="true">🌟</span>
+              <span class="vnav-text">Testimonials</span>
+              <span class="vnav-kanji">推薦</span>
+              <span class="vnav-glow-pill" aria-hidden="true"></span>
+            </a>
+          </li>
+          <li class="vnav-item" role="none">
+            <a href="#chat" class="vnav-link" data-section="chat" role="menuitem">
+              <span class="vnav-icon" aria-hidden="true">💬</span>
+              <span class="vnav-text">Chat</span>
+              <span class="vnav-kanji">通信</span>
+              <span class="vnav-glow-pill" aria-hidden="true"></span>
+            </a>
+          </li>
+          <li class="vnav-item" role="none">
+            <a href="#contact" class="vnav-link" data-section="contact" role="menuitem">
+              <span class="vnav-icon" aria-hidden="true">💌</span>
+              <span class="vnav-text">Contact</span>
+              <span class="vnav-kanji">連絡</span>
+              <span class="vnav-glow-pill" aria-hidden="true"></span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Sidebar Status & Footer -->
+      <div class="vnav-footer">
+        <div class="vnav-status-badge">
+          <span class="vnav-status-dot" aria-hidden="true"></span>
+          <div class="vnav-status-text">
+            <span class="vnav-status-main">NODE: TOKYO-01</span>
+            <span class="vnav-status-sub">LATENCY: 12ms · ONLINE</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </aside>
+
+  <!-- ========================================================================= -->
+  <!-- HEADER & NAVIGATION BAR                                                   -->
+  <!-- ========================================================================= -->
+  <header class="site-header" id="site-header">
+    <div class="container header-container">
+      
+      <!-- Mobile Sidebar Toggle Button -->
+      <button 
+        id="mobile-nav-toggle" 
+        class="mobile-nav-toggle-btn anime-btn-glow" 
+        type="button" 
+        aria-label="Open sidebar menu" 
+        aria-expanded="false" 
+        aria-controls="vertical-navbar"
+      >
+        <span class="hamburger-bar" aria-hidden="true"></span>
+        <span class="hamburger-bar" aria-hidden="true"></span>
+        <span class="hamburger-bar" aria-hidden="true"></span>
+        <span class="sr-only">Toggle Sidebar Navigation</span>
+      </button>
+
+      <!-- Brand / Logo Placeholder -->
+      <a href="#hero" class="brand-logo" aria-label="Home">
+        <span class="logo-bracket">&lt;</span>
+        <span class="logo-name">Dharini M S</span>
+        <span class="logo-slash">/</span>
+        <span class="logo-bracket">&gt;</span>
+      </a>
+
+      <!-- Header Breadcrumb / Active Section Indicator -->
+      <div class="header-section-indicator" aria-live="polite">
+        <span class="indicator-sparkle" aria-hidden="true">✦</span>
+        <span id="header-active-section">Home</span>
+      </div>
+
+      <!-- Night Mode Toggle Placeholder -->
+      <div class="theme-toggle-wrapper">
+        <button 
+          id="night-mode-toggle" 
+          class="theme-toggle-btn anime-btn-glow" 
+          type="button" 
+          aria-label="Toggle night mode"
+          aria-pressed="false"
+          title="Toggle Day / Night mode (Browser default detected via CSS Media Query)"
+        >
+          <!-- Sun / Sakura icon (shown in dark mode to switch to daylight) -->
+          <svg class="theme-icon icon-sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <!-- Moon icon (shown in light mode to switch to night) -->
+          <svg class="theme-icon icon-moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+          <span class="sr-only">Toggle Dark Mode</span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ========================================================================= -->
+  <!-- MAIN CONTENT AREA                                                         -->
+  <!-- ========================================================================= -->
+  <main id="main-content">
+
+    <!-- ======================================================================= -->
+    <!-- 1. ANIME AESTHETIC HERO SECTION                                         -->
+    <!-- ======================================================================= -->
+    <!-- 
+      Hero Section (Anime Aesthetic Style):
+      - Background: Set in CSS via url('hero-bg.jpg') with animated overlay gradients.
+      - Theme Detection: Driven by CSS @media (prefers-color-scheme: dark).
+      - Welcome title & brief tagline with anime typography & Japanese kana accents.
+      - Interactive anime night mode toggle widget.
+      - Animated floating sakura petals & anime stat cards.
+    -->
+    <section id="hero" class="section hero-section anime-hero" aria-labelledby="hero-heading">
+      
+      <!-- Decorative Anime Sakura Petals Floating Effect -->
+      <div class="sakura-container" aria-hidden="true">
+        <span class="sakura-petal p1">🌸</span>
+        <span class="sakura-petal p2">✨</span>
+        <span class="sakura-petal p3">🌸</span>
+        <span class="sakura-petal p4">🌸</span>
+        <span class="sakura-petal p5">✨</span>
+        <span class="sakura-petal p6">🌸</span>
+      </div>
+
+      <div class="container hero-container">
+        
+        <!-- Hero Text & Action Content -->
+        <div class="hero-content anime-card-glass">
+          
+          <!-- Anime Status Eyebrow & Mode Indicator -->
+          <div class="hero-eyebrow-wrapper">
+            <span class="anime-pill status-online">
+              <span class="pulse-dot" aria-hidden="true"></span>
+              <span>ONLINE · LVL 99 CODE ALCHEMIST</span>
+            </span>
+
+            <!-- Hero Night Mode Toggle & Media Query Detection Indicator -->
+            <div class="hero-theme-widget" aria-label="Theme mode switcher">
+              <span class="theme-auto-tag" title="Detected automatically using CSS media queries">
+                <span class="magic-sparkle">✦</span>
+                <span id="theme-detected-text">CSS Auto-Detect Active</span>
+              </span>
+              <button 
+                id="hero-night-toggle" 
+                class="anime-toggle-pill" 
+                type="button" 
+                aria-label="Toggle night mode" 
+                aria-pressed="false"
+              >
+                <span class="toggle-icon-day" aria-hidden="true">🌸 Day</span>
+                <span class="toggle-separator" aria-hidden="true">/</span>
+                <span class="toggle-icon-night" aria-hidden="true">🌙 Night</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Welcoming Title -->
+          <h1 id="hero-heading" class="hero-title anime-title">
+            <span class="title-welcome">Welcome to My Digital Atelier <span class="anime-sparkle" aria-hidden="true">✦</span></span>
+            <span class="title-name">
+              Konnichiwa, I'm <span class="gradient-text">Dharini M S</span>
+            </span>
+          </h1>
+
+          <!-- Role Subtitle with Japanese Kana Accent -->
+          <div class="hero-role-badge">
+            <span class="japanese-script">ソフトウェア エンジニア</span>
+            <span class="role-divider">•</span>
+            <span class="role-text">Full-Stack Software Engineer &amp; Systems Architect</span>
+          </div>
+
+          <!-- Brief Welcoming Tagline -->
+          <p class="hero-description anime-tagline">
+            Weaving high-performance distributed systems, scalable architectures, and 
+            magical anime-inspired digital realms into reality with precision and passion. ✨
+          </p>
+
+          <!-- Anime Call-To-Action Quest Buttons -->
+          <div class="hero-actions">
+            <a href="#projects" class="btn btn-primary anime-btn-neon">
+              <span class="btn-icon">⚔️</span>
+              <span>Explore Projects</span>
+            </a>
+            <a href="#contact" class="btn btn-secondary anime-btn-glass">
+              <span class="btn-icon">💌</span>
+              <span>Summon Me</span>
+            </a>
+            <a href="#skills" class="btn btn-outline anime-btn-outline">
+              <span class="btn-icon">📜</span>
+              <span>View Tech Stack</span>
+            </a>
+          </div>
+
+          <!-- Quick Social & Coordinates -->
+          <div class="hero-socials anime-socials">
+            <span class="social-label">Portal Links:</span>
+            <a href="https://github.com/dharinims90-cmd" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile" class="social-link">GitHub</a>
+            <span class="divider" aria-hidden="true">◈</span>
+            <a href="https://www.linkedin.com/in/dharini-m-s-33359140a" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile" class="social-link">LinkedIn</a>
+            <span class="divider" aria-hidden="true">◈</span>
+            <a href="mailto:dharinims90@gmail.com" aria-label="Send Email to Dharini M S (dharinims90@gmail.com)" class="social-link">Email</a>
+          </div>
+
+        </div>
+
+        <!-- Hero Visual: Anime Character / Developer Showcase Card -->
+        <div class="hero-visual anime-visual-wrapper">
+          <div class="anime-character-card">
+            <!-- Glowing Neon Frame -->
+            <div class="avatar-glow-ring"></div>
+            
+            <div class="avatar-container">
+              <!-- Anime Avatar / Visual -->
+              <div class="avatar-art" aria-label="Anime style software engineer illustration">
+                <div class="anime-avatar-badge">
+                  <span class="dev-symbol">&lt;Dev /&gt;</span>
+                  <span class="dev-aura">✨ 🌸 ✨</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Anime Character Stat HUD -->
+            <div class="character-stats-hud">
+              <div class="stat-pill">
+                <span class="stat-icon">❤️</span>
+                <span class="stat-name">HP</span>
+                <span class="stat-bar"><span class="stat-fill hp-fill"></span></span>
+              </div>
+              <div class="stat-pill">
+                <span class="stat-icon">⚡</span>
+                <span class="stat-name">Mana</span>
+                <span class="stat-bar"><span class="stat-fill mana-fill"></span></span>
+              </div>
+              <div class="character-trait">
+                <span class="trait-tag">🌸 Lo-Fi Coder</span>
+                <span class="trait-tag">⚡ Cloud Native</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================================= -->
+    <!-- 2. ABOUT SECTION PLACEHOLDER                                            -->
+    <!-- ======================================================================= -->
+    <!-- ======================================================================= -->
+    <!-- 2. ABOUT ME SECTION (CLEAN, MINIMALISTIC DESIGN)                       -->
+    <!-- ======================================================================= -->
+    <!-- 
+      About Me Section:
+      - Clean, minimalistic layout with subtle anime aesthetic accents.
+      - Profile photo of Dharini M S with interactive real vs anime avatar switcher.
+      - Short engineering bio, philosophy, career highlights, and personal interests.
+    -->
+    <section id="about" class="section about-section" aria-labelledby="about-heading">
+      <div class="container">
+        
+        <!-- Section Header -->
+        <div class="section-header">
+          <div class="section-eyebrow">
+            <span class="japanese-script">自己紹介 // BIO</span>
+            <span class="role-divider">•</span>
+            <span class="role-text">GET TO KNOW ME</span>
+          </div>
+          <h2 id="about-heading" class="section-title">About Me</h2>
+          <p class="section-subtitle">
+            Software engineer bridging elegant systems architecture, clean code principles, 
+            and delightful digital experiences.
+          </p>
+        </div>
+
+        <!-- About Layout Grid (Clean 2-Column Minimalist Layout) -->
+        <div class="about-grid-modern">
+          
+          <!-- Left Column: Profile Card with Clean Minimalist Styling & Image Switcher -->
+          <div class="about-profile-card anime-card-glass">
+            
+            <!-- Profile Image Container with Minimalist Frame & Glow -->
+            <div class="profile-image-wrapper">
+              <div class="profile-image-frame">
+                <!-- Primary Image: User's provided photo -->
+                <img 
+                  id="about-profile-img"
+                  src="WhatsApp Image 2026-10-07 at 10.16.34 AM.jpeg" 
+                  alt="Dharini M S - Software Engineer portrait"
+                  class="profile-img"
+                  loading="lazy"
+                >
+                <div class="profile-status-dot-wrapper" title="Online &amp; Ready to Collaborate">
+                  <span class="profile-status-dot" aria-hidden="true"></span>
+                </div>
+              </div>
+
+              <!-- Avatar Mode Switcher: Real Photo vs Anime Aesthetic Avatar -->
+              <div class="avatar-toggle-pill" role="group" aria-label="Profile photo style switcher">
+                <button 
+                  type="button" 
+                  id="btn-photo-real" 
+                  class="avatar-switch-btn active" 
+                  aria-pressed="true"
+                  title="Show Real Professional Photo"
+                >
+                  <span aria-hidden="true">📷</span> Real Photo
+                </button>
+                <button 
+                  type="button" 
+                  id="btn-photo-anime" 
+                  class="avatar-switch-btn" 
+                  aria-pressed="false"
+                  title="Show Anime Aesthetic Portrait"
+                >
+                  <span aria-hidden="true">🌸</span> Anime Aesthetic
+                </button>
+              </div>
+            </div>
+
+            <!-- Profile Info & Meta -->
+            <div class="profile-meta">
+              <h3 class="profile-name">Dharini M S</h3>
+              <p class="profile-role">Full-Stack Software Engineer</p>
+
+              <div class="profile-quick-facts">
+                <div class="quick-fact-item">
+                  <span class="fact-icon" aria-hidden="true">📍</span>
+                  <span class="fact-text">India · Remote Friendly</span>
+                </div>
+                <div class="quick-fact-item">
+                  <span class="fact-icon" aria-hidden="true">💼</span>
+                  <span class="fact-text">Full-Time &amp; High-Impact Roles</span>
+                </div>
+                <div class="quick-fact-item">
+                  <span class="fact-icon" aria-hidden="true">🎓</span>
+                  <span class="fact-text">B.S. in Computer Science</span>
+                </div>
+              </div>
+
+              <!-- Mini Action Buttons -->
+              <div class="profile-actions">
+                <a href="#contact" class="btn btn-primary anime-btn-neon btn-sm">
+                  <span>Contact Me</span> ➜
+                </a>
+                <a href="#projects" class="btn btn-secondary anime-btn-glass btn-sm">
+                  <span>View Work</span>
+                </a>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Right Column: Clean Bio, Career Highlights & Personal Interests -->
+          <div class="about-content-column">
+            
+            <!-- Clean Bio Description -->
+            <div class="about-bio-card anime-card-glass">
+              <h3 class="about-card-title">
+                <span class="title-sparkle" aria-hidden="true">✦</span>
+                Engineering Philosophy &amp; Journey
+              </h3>
+              <p class="about-paragraph">
+                Hello! I'm <strong>Dharini M S</strong>, a software engineer with a deep passion for building 
+                scalable web applications, distributed backend services, and intuitive digital interfaces. 
+                My focus lies at the intersection of robust systems engineering and clean, human-centered design.
+              </p>
+              <p class="about-paragraph">
+                Whether architecting event-driven microservices, fine-tuning database query performance, or crafting 
+                fluid web frontends with modern frameworks, I believe in writing readable, maintainable, and 
+                thoroughly tested code that stands the test of time.
+              </p>
+            </div>
+
+            <!-- Career Highlights (Clean Minimalist Cards Grid) -->
+            <div class="about-highlights-card anime-card-glass">
+              <h3 class="about-card-title">
+                <span class="title-sparkle" aria-hidden="true">⚡</span>
+                Career Highlights &amp; Accomplishments
+              </h3>
+              
+              <div class="highlights-grid">
+                
+                <div class="highlight-item">
+                  <div class="highlight-icon-box" aria-hidden="true">🚀</div>
+                  <div class="highlight-text-content">
+                    <h4 class="highlight-heading">Production Scalability</h4>
+                    <p class="highlight-desc">Architected microservices handling high-throughput web traffic with an uptime mindset of 99.9%.</p>
+                  </div>
+                </div>
+
+                <div class="highlight-item">
+                  <div class="highlight-icon-box" aria-hidden="true">⚡</div>
+                  <div class="highlight-text-content">
+                    <h4 class="highlight-heading">Latency &amp; Performance</h4>
+                    <p class="highlight-desc">Reduced end-to-end API latency by up to 45% using Redis caching and asynchronous queues.</p>
+                  </div>
+                </div>
+
+                <div class="highlight-item">
+                  <div class="highlight-icon-box" aria-hidden="true">🛠️</div>
+                  <div class="highlight-text-content">
+                    <h4 class="highlight-heading">End-to-End Stack</h4>
+                    <p class="highlight-desc">Seamlessly delivered full-stack products using TypeScript, React, Node.js, Go, Docker, and AWS.</p>
+                  </div>
+                </div>
+
+                <div class="highlight-item">
+                  <div class="highlight-icon-box" aria-hidden="true">🛡️</div>
+                  <div class="highlight-text-content">
+                    <h4 class="highlight-heading">Code Quality &amp; CI/CD</h4>
+                    <p class="highlight-desc">Instituted automated CI test pipelines, increasing unit and integration coverage past 90%.</p>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- Personal Interests (Clean Pill Chips) -->
+            <div class="about-interests-card anime-card-glass">
+              <h3 class="about-card-title">
+                <span class="title-sparkle" aria-hidden="true">🌸</span>
+                Personal Interests &amp; Creative Pursuits
+              </h3>
+              <p class="interests-intro">
+                When I step away from code editors and terminal sessions, here is what fuels my creativity:
+              </p>
+              
+              <div class="interests-chips-grid">
+                <span class="interest-chip">
+                  <span class="chip-icon">🌸</span> Anime &amp; Studio Ghibli
+                </span>
+                <span class="interest-chip">
+                  <span class="chip-icon">🎧</span> Lo-Fi &amp; Synthwave Music
+                </span>
+                <span class="interest-chip">
+                  <span class="chip-icon">☕</span> Specialty Coffee &amp; Tea
+                </span>
+                <span class="interest-chip">
+                  <span class="chip-icon">🎨</span> Digital Art &amp; UI Aesthetics
+                </span>
+                <span class="interest-chip">
+                  <span class="chip-icon">📖</span> Tech Books &amp; Distributed Systems
+                </span>
+                <span class="interest-chip">
+                  <span class="chip-icon">🌱</span> Open Source &amp; Mentoring
+                </span>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================================= -->
+    <!-- 3. SKILLS SECTION — Anime Aesthetic with Progress Bars & Skill Cards   -->
+    <!-- ======================================================================= -->
+    <!--
+      Skills Section:
+      - Core languages: Java, C Programming, Python — each shown with an animated
+        circular radial progress ring and an XP-style horizontal progress bar.
+      - Categorized skill cards: Languages, Tools & Practices, displayed as
+        anime-style stat cards with hover lift/glow effects.
+      - Animated entrance: skills bars fill on scroll via Intersection Observer JS.
+      - Anime aesthetic: neon glow, glassmorphism, sakura accents, kanji labels.
+    -->
+    <section id="skills" class="section skills-section" aria-labelledby="skills-heading">
+      <div class="container">
+
+        <!-- Section Header with Anime Eyebrow -->
+        <div class="section-header">
+          <div class="section-eyebrow">
+            <span class="japanese-script">技術スキル // TECH SKILLS</span>
+            <span class="role-divider">•</span>
+            <span class="role-text">COMPETENCIES</span>
+          </div>
+          <h2 id="skills-heading" class="section-title">My Skill Grimoire</h2>
+          <p class="section-subtitle">
+            Core spells I've mastered on my journey as a software engineer — each carved
+            through hands-on projects, challenges, and relentless practice. ✨
+          </p>
+        </div>
+
+        <!-- ================================================================= -->
+        <!-- PRIMARY SKILL BARS: Java, C, Python (User's core languages)       -->
+        <!-- Each bar uses: language icon emoji, kanji label, XP bar, level    -->
+        <!-- ================================================================= -->
+        <div class="skills-primary-block">
+          <h3 class="skills-block-label">
+            <span class="block-label-icon" aria-hidden="true">⚔️</span>
+            Core Programming Languages
+            <span class="block-label-kana" aria-hidden="true">プログラミング言語</span>
+          </h3>
+
+          <div class="skills-bars-grid">
+
+            <!-- Java skill bar — primary object-oriented language -->
+            <!-- Data attribute 'data-progress' drives JS animation width -->
+            <div class="skill-bar-card anime-card-glass" data-skill="java">
+              <div class="skill-bar-header">
+                <div class="skill-identity">
+                  <!-- Language icon: Java Duke coffee cup -->
+                  <span class="skill-icon-badge" aria-hidden="true">☕</span>
+                  <div class="skill-meta">
+                    <span class="skill-name">Java</span>
+                    <span class="skill-kanji">ジャバ</span>
+                  </div>
+                </div>
+                <div class="skill-level-badge">
+                  <span class="level-tag">Lv. 80</span>
+                  <span class="level-class">Advanced</span>
+                </div>
+              </div>
+              <!-- XP Progress bar — animates from 0 to target width on scroll -->
+              <div class="skill-xp-track" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" aria-label="Java proficiency 80%">
+                <div class="skill-xp-fill java-fill" data-progress="80">
+                  <span class="xp-shimmer" aria-hidden="true"></span>
+                </div>
+              </div>
+              <div class="skill-bar-footer">
+                <span class="skill-highlight">OOP · Spring · Android · JVM Internals</span>
+                <span class="skill-xp-label">80 / 100 XP</span>
+              </div>
+            </div>
+
+            <!-- C Programming skill bar — systems-level language -->
+            <div class="skill-bar-card anime-card-glass" data-skill="c">
+              <div class="skill-bar-header">
+                <div class="skill-identity">
+                  <!-- Language icon: gear for C systems programming -->
+                  <span class="skill-icon-badge" aria-hidden="true">⚙️</span>
+                  <div class="skill-meta">
+                    <span class="skill-name">C Programming</span>
+                    <span class="skill-kanji">シー言語</span>
+                  </div>
+                </div>
+                <div class="skill-level-badge">
+                  <span class="level-tag">Lv. 75</span>
+                  <span class="level-class">Proficient</span>
+                </div>
+              </div>
+              <!-- XP bar for C — represents memory management, pointers, algorithms -->
+              <div class="skill-xp-track" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" aria-label="C programming proficiency 75%">
+                <div class="skill-xp-fill c-fill" data-progress="75">
+                  <span class="xp-shimmer" aria-hidden="true"></span>
+                </div>
+              </div>
+              <div class="skill-bar-footer">
+                <span class="skill-highlight">Pointers · Memory Mgmt · Algorithms · Data Structures</span>
+                <span class="skill-xp-label">75 / 100 XP</span>
+              </div>
+            </div>
+
+            <!-- Python skill bar — scripting, data, automation -->
+            <div class="skill-bar-card anime-card-glass" data-skill="python">
+              <div class="skill-bar-header">
+                <div class="skill-identity">
+                  <!-- Language icon: snake emoji for Python -->
+                  <span class="skill-icon-badge" aria-hidden="true">🐍</span>
+                  <div class="skill-meta">
+                    <span class="skill-name">Python</span>
+                    <span class="skill-kanji">パイソン</span>
+                  </div>
+                </div>
+                <div class="skill-level-badge">
+                  <span class="level-tag">Lv. 85</span>
+                  <span class="level-class">Expert</span>
+                </div>
+              </div>
+              <!-- XP bar for Python — represents versatility in scripting and ML -->
+              <div class="skill-xp-track" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" aria-label="Python proficiency 85%">
+                <div class="skill-xp-fill python-fill" data-progress="85">
+                  <span class="xp-shimmer" aria-hidden="true"></span>
+                </div>
+              </div>
+              <div class="skill-bar-footer">
+                <span class="skill-highlight">Scripting · Data Analysis · Automation · FastAPI</span>
+                <span class="skill-xp-label">85 / 100 XP</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ================================================================= -->
+        <!-- SKILL MASTERY STAT CARDS — Anime RPG Character Sheet Style         -->
+        <!-- Each card represents a skill domain with icon, title, & tag chips  -->
+        <!-- Hover triggers lift + glow effect (CSS transform + box-shadow)     -->
+        <!-- ================================================================= -->
+        <div class="skills-mastery-grid">
+
+          <!-- Mastery Card: Object-Oriented Programming -->
+          <article class="skill-mastery-card anime-card-glass" tabindex="0">
+            <div class="mastery-card-icon" aria-hidden="true">🏗️</div>
+            <h4 class="mastery-card-title">Object-Oriented Design</h4>
+            <p class="mastery-card-desc">
+              Designing clean, maintainable systems using encapsulation, polymorphism, and SOLID principles.
+            </p>
+            <div class="mastery-tags">
+              <!-- Tags represent specific sub-skills under this mastery -->
+              <span class="mastery-tag">Classes &amp; Objects</span>
+              <span class="mastery-tag">Inheritance</span>
+              <span class="mastery-tag">Design Patterns</span>
+              <span class="mastery-tag">SOLID</span>
+            </div>
+            <!-- Hover glow pulse overlay -->
+            <div class="card-hover-glow" aria-hidden="true"></div>
+          </article>
+
+          <!-- Mastery Card: Data Structures & Algorithms -->
+          <article class="skill-mastery-card anime-card-glass" tabindex="0">
+            <div class="mastery-card-icon" aria-hidden="true">🧩</div>
+            <h4 class="mastery-card-title">Data Structures &amp; Algorithms</h4>
+            <p class="mastery-card-desc">
+              Solving complex problems with efficiency — arrays, trees, graphs, sorting, and dynamic programming.
+            </p>
+            <div class="mastery-tags">
+              <span class="mastery-tag">Arrays &amp; Lists</span>
+              <span class="mastery-tag">Trees &amp; Graphs</span>
+              <span class="mastery-tag">Sorting</span>
+              <span class="mastery-tag">DP</span>
+            </div>
+            <div class="card-hover-glow" aria-hidden="true"></div>
+          </article>
+
+          <!-- Mastery Card: Scripting & Automation -->
+          <article class="skill-mastery-card anime-card-glass" tabindex="0">
+            <div class="mastery-card-icon" aria-hidden="true">🤖</div>
+            <h4 class="mastery-card-title">Scripting &amp; Automation</h4>
+            <p class="mastery-card-desc">
+              Automating repetitive workflows, file handling, and system operations with Python scripts.
+            </p>
+            <div class="mastery-tags">
+              <span class="mastery-tag">Python Scripts</span>
+              <span class="mastery-tag">File I/O</span>
+              <span class="mastery-tag">Task Automation</span>
+              <span class="mastery-tag">APIs</span>
+            </div>
+            <div class="card-hover-glow" aria-hidden="true"></div>
+          </article>
+
+          <!-- Mastery Card: Systems Programming -->
+          <article class="skill-mastery-card anime-card-glass" tabindex="0">
+            <div class="mastery-card-icon" aria-hidden="true">💾</div>
+            <h4 class="mastery-card-title">Systems Programming</h4>
+            <p class="mastery-card-desc">
+              Low-level programming expertise with memory management, pointers, and embedded logic in C.
+            </p>
+            <div class="mastery-tags">
+              <span class="mastery-tag">Pointers</span>
+              <span class="mastery-tag">Memory Mgmt</span>
+              <span class="mastery-tag">Bit Manipulation</span>
+              <span class="mastery-tag">Structs</span>
+            </div>
+            <div class="card-hover-glow" aria-hidden="true"></div>
+          </article>
+
+          <!-- Mastery Card: Problem Solving -->
+          <article class="skill-mastery-card anime-card-glass" tabindex="0">
+            <div class="mastery-card-icon" aria-hidden="true">🧠</div>
+            <h4 class="mastery-card-title">Analytical Problem Solving</h4>
+            <p class="mastery-card-desc">
+              Breaking down complex engineering challenges into elegant, testable, and maintainable solutions.
+            </p>
+            <div class="mastery-tags">
+              <span class="mastery-tag">Debugging</span>
+              <span class="mastery-tag">Logic</span>
+              <span class="mastery-tag">Optimization</span>
+              <span class="mastery-tag">Testing</span>
+            </div>
+            <div class="card-hover-glow" aria-hidden="true"></div>
+          </article>
+
+          <!-- Mastery Card: Software Engineering Practices -->
+          <article class="skill-mastery-card anime-card-glass" tabindex="0">
+            <div class="mastery-card-icon" aria-hidden="true">📐</div>
+            <h4 class="mastery-card-title">Software Engineering Practices</h4>
+            <p class="mastery-card-desc">
+              Following industry best practices including version control, code reviews, and clean architecture.
+            </p>
+            <div class="mastery-tags">
+              <span class="mastery-tag">Git</span>
+              <span class="mastery-tag">Code Review</span>
+              <span class="mastery-tag">Clean Code</span>
+              <span class="mastery-tag">Agile</span>
+            </div>
+            <div class="card-hover-glow" aria-hidden="true"></div>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================================= -->
+    <!-- 4. TIMELINE SECTION — Dharini's Education, Projects & Milestones       -->
+    <!-- ======================================================================= -->
+    <!--
+      Timeline Section:
+      - Chronological journey: 10th → PU → B.E. → Smart Parking Project
+      - Each item is a rounded glassmorphism card with:
+          • Category badge (Education / Project)
+          • Institution/event name, date range
+          • Description and tech/subject tags
+          • Smooth hover lift + glow CSS transition
+      - A vertical anime-accent connecting line links the timeline dots
+      - Alternating left/right layout on desktop for visual variety
+    -->
+    <section id="timeline" class="section timeline-section" aria-labelledby="timeline-heading">
+      <div class="container">
+
+        <!-- Section Header -->
+        <div class="section-header">
+          <div class="section-eyebrow">
+            <span class="japanese-script">年表 // CHRONICLE</span>
+            <span class="role-divider">•</span>
+            <span class="role-text">MY JOURNEY</span>
+          </div>
+          <h2 id="timeline-heading" class="section-title">My Story So Far</h2>
+          <p class="section-subtitle">
+            Every chapter of growth, learning, and building — from my first classroom
+            to my first real-world project. 🌸
+          </p>
+        </div>
+
+        <!-- Timeline Track -->
+        <div class="tl-track" aria-label="Timeline of education and projects">
+
+          <!-- ── Item 1: 10th Standard — Oldest, at top ── -->
+          <!--
+            Education milestone: Secondary schooling at St. Mary's.
+            Marks the foundation of Dharini's academic journey.
+          -->
+          <div class="tl-item tl-left" data-tl-type="education">
+
+            <!-- Dot on the central vertical line -->
+            <div class="tl-dot" aria-hidden="true">
+              <span class="tl-dot-inner">🏫</span>
+            </div>
+
+            <!-- Card -->
+            <article class="tl-card anime-card-glass" tabindex="0">
+              <!-- Top badge row: category tag + year chip -->
+              <div class="tl-card-top">
+                <span class="tl-badge tl-badge-edu">
+                  <span aria-hidden="true">📚</span> Education
+                </span>
+                <time class="tl-year" datetime="2020">2020</time>
+              </div>
+
+              <h3 class="tl-title">10th Standard — SSLC</h3>
+              <p class="tl-place">
+                <span class="tl-place-icon" aria-hidden="true">🏛️</span>
+                St. Mary's English Medium School
+              </p>
+
+              <p class="tl-desc">
+                Completed Secondary School Leaving Certificate (SSLC) with a strong foundation
+                in Mathematics, Science, and English. Developed early interests in logical thinking
+                and problem-solving that would later guide a career in engineering.
+              </p>
+
+              <div class="tl-tags">
+                <!-- Subject/achievement tags -->
+                <span class="tl-tag">Mathematics</span>
+                <span class="tl-tag">Science</span>
+                <span class="tl-tag">English Medium</span>
+                <span class="tl-tag">SSLC</span>
+              </div>
+
+              <!-- Hover glow pulse, controlled via CSS -->
+              <div class="tl-card-glow" aria-hidden="true"></div>
+            </article>
+          </div>
+
+          <!-- ── Item 2: PU (Pre-University / 11th–12th) ── -->
+          <!--
+            Education milestone: PU at Adhichunchangiri Independent PU College, Shivamogga.
+            Science stream, pivotal step toward B.E. admission.
+          -->
+          <div class="tl-item tl-right" data-tl-type="education">
+
+            <div class="tl-dot" aria-hidden="true">
+              <span class="tl-dot-inner">📖</span>
+            </div>
+
+            <article class="tl-card anime-card-glass" tabindex="0">
+              <div class="tl-card-top">
+                <span class="tl-badge tl-badge-edu">
+                  <span aria-hidden="true">📚</span> Education
+                </span>
+                <time class="tl-year" datetime="2022">2020 — 2022</time>
+              </div>
+
+              <h3 class="tl-title">Pre-University (PUC) — Science</h3>
+              <p class="tl-place">
+                <span class="tl-place-icon" aria-hidden="true">🏛️</span>
+                Adhichunchangiri Independent PU College, Shivamogga
+              </p>
+
+              <p class="tl-desc">
+                Pursued the PCMB (Physics, Chemistry, Mathematics, Biology) stream at Adhichunchangiri
+                Independent PU College. Built analytical and scientific rigour through intensive coursework,
+                qualifying for engineering entrance and earning admission to B.E.
+              </p>
+
+              <div class="tl-tags">
+                <span class="tl-tag">Physics</span>
+                <span class="tl-tag">Chemistry</span>
+                <span class="tl-tag">Mathematics</span>
+                <span class="tl-tag">PCMB</span>
+                <span class="tl-tag">Shivamogga</span>
+              </div>
+
+              <div class="tl-card-glow" aria-hidden="true"></div>
+            </article>
+          </div>
+
+          <!-- ── Item 3: B.E. — Currently Pursuing ── -->
+          <!--
+            Education milestone: Bachelor of Engineering (ongoing) at AIT Chikkamagaluru.
+            Current and most significant academic chapter — marked as "active/current".
+          -->
+          <div class="tl-item tl-left tl-current" data-tl-type="education">
+
+            <!-- Dot gets extra pulse ring to indicate "current" status -->
+            <div class="tl-dot tl-dot-current" aria-hidden="true">
+              <span class="tl-dot-inner">🎓</span>
+            </div>
+
+            <article class="tl-card anime-card-glass tl-card-current" tabindex="0">
+              <div class="tl-card-top">
+                <span class="tl-badge tl-badge-edu">
+                  <span aria-hidden="true">📚</span> Education
+                </span>
+                <!-- "Present" chip shows this is ongoing -->
+                <span class="tl-year tl-year-current">
+                  <span class="tl-pulse-dot" aria-hidden="true"></span>
+                  2022 — Present
+                </span>
+              </div>
+
+              <h3 class="tl-title">
+                Bachelor of Engineering (B.E.)
+                <span class="tl-current-tag" aria-label="Currently enrolled">Currently Pursuing</span>
+              </h3>
+              <p class="tl-place">
+                <span class="tl-place-icon" aria-hidden="true">🏛️</span>
+                Adhichunchangiri Institute of Technology, Chikkamagaluru
+              </p>
+
+              <p class="tl-desc">
+                Currently pursuing B.E. at AIT Chikkamagaluru, one of Karnataka's leading engineering
+                institutions. Specialising in core Computer Science concepts including Data Structures,
+                Algorithms, Object-Oriented Programming, and Systems Design. Actively working on projects
+                that bridge hardware and software.
+              </p>
+
+              <div class="tl-tags">
+                <span class="tl-tag">Computer Science</span>
+                <span class="tl-tag">Data Structures</span>
+                <span class="tl-tag">OOP</span>
+                <span class="tl-tag">Algorithms</span>
+                <span class="tl-tag">AIT Chikkamagaluru</span>
+              </div>
+
+              <div class="tl-card-glow" aria-hidden="true"></div>
+            </article>
+          </div>
+
+          <!-- ── Item 4: Smart Parking System Project ── -->
+          <!--
+            Project milestone: Smart Parking System using sensors.
+            Represents Dharini's real-world engineering project work during B.E.
+          -->
+          <div class="tl-item tl-right" data-tl-type="project">
+
+            <div class="tl-dot tl-dot-project" aria-hidden="true">
+              <span class="tl-dot-inner">⚙️</span>
+            </div>
+
+            <article class="tl-card anime-card-glass tl-card-project" tabindex="0">
+              <div class="tl-card-top">
+                <span class="tl-badge tl-badge-project">
+                  <span aria-hidden="true">🚀</span> Project
+                </span>
+                <time class="tl-year" datetime="2024">2024</time>
+              </div>
+
+              <h3 class="tl-title">Smart Parking System Using Sensors</h3>
+              <p class="tl-place">
+                <span class="tl-place-icon" aria-hidden="true">🔬</span>
+                B.E. Project — Adhichunchangiri Institute of Technology
+              </p>
+
+              <p class="tl-desc">
+                Designed and built an IoT-enabled smart parking system that uses ultrasonic and IR sensors
+                to detect vehicle occupancy in real time. The system displays available parking slots on an
+                LCD display and can notify users via a web interface. Combines embedded systems programming
+                with real-world sensor integration and data visualisation.
+              </p>
+
+              <div class="tl-tags">
+                <!-- Tech/tools used in the project -->
+                <span class="tl-tag tl-tag-tech">Arduino</span>
+                <span class="tl-tag tl-tag-tech">Ultrasonic Sensors</span>
+                <span class="tl-tag tl-tag-tech">IR Sensors</span>
+                <span class="tl-tag tl-tag-tech">LCD Display</span>
+                <span class="tl-tag tl-tag-tech">IoT</span>
+                <span class="tl-tag tl-tag-tech">Embedded C</span>
+              </div>
+
+              <div class="tl-card-glow" aria-hidden="true"></div>
+            </article>
+          </div>
+
+        </div>
+        <!-- /tl-track -->
+
+      </div>
+    </section>
+
+    <!-- ======================================================================= -->
+    <!-- 5. PROJECTS SECTION PLACEHOLDER                                         -->
+    <!-- ======================================================================= -->
+    <!--
+      Projects Section:
+      - Each .proj-card has a data-project="id" attribute that connects it
+        to its matching #proj-modal-id modal panel via JavaScript.
+      - Clicking the thumbnail overlay button or "View Details" sets the
+        modal visible and populates it — this is the thumbnail→detail link.
+      - Three real projects with generated anime-aesthetic thumbnails.
+    -->
+    <section id="projects" class="section projects-section" aria-labelledby="projects-heading">
+      <div class="container">
+
+        <div class="section-header">
+          <div class="section-eyebrow">
+            <span class="japanese-script">作品集 // GRIMOIRE</span>
+            <span class="role-divider">•</span>
+            <span class="role-text">FEATURED WORK</span>
+          </div>
+          <h2 id="projects-heading" class="section-title">Project Showcase</h2>
+          <p class="section-subtitle">
+            A showcase of systems I've designed, built, and shipped —
+            each card opens a full project detail view. ⚔️
+          </p>
+        </div>
+
+        <!-- ================================================================
+             PROJECT GRID — 3 cards, each connected to a modal via data-project
+             ================================================================ -->
+        <div class="proj-grid">
+
+          <!-- ── CARD 1: Smart Parking System ──────────────────────────────
+               data-project="parking" links this card to #proj-modal-parking.
+               The thumbnail <img> shows project-parking.jpg as the preview.
+               Clicking anywhere on .proj-thumb-btn triggers the modal open.
+          ─────────────────────────────────────────────────────────────────── -->
+          <article
+            class="proj-card anime-card-glass"
+            data-project="parking"
+            id="proj-card-parking"
+            tabindex="0"
+            aria-label="Smart Parking System project — click to view details"
+          >
+            <!-- THUMBNAIL: clicking this opens the detail modal for "parking" -->
+            <div class="proj-thumb-wrapper">
+              <img
+                src="project-parking.jpg"
+                alt="Smart Parking System using IoT sensors — isometric neon illustration"
+                class="proj-thumb-img"
+                loading="lazy"
+                width="600"
+                height="338"
+              />
+              <!-- Overlay that appears on thumbnail hover, triggers modal on click -->
+              <button
+                class="proj-thumb-btn"
+                data-open-modal="parking"
+                aria-haspopup="dialog"
+                aria-controls="proj-modal-parking"
+                type="button"
+              >
+                <span class="proj-thumb-btn-icon" aria-hidden="true">🔍</span>
+                <span>View Details</span>
+              </button>
+              <!-- Status badge pinned top-left of the thumbnail -->
+              <span class="proj-status-badge proj-status-featured">⭐ Featured</span>
+            </div>
+
+            <!-- Card body: quick summary info -->
+            <div class="proj-card-body">
+              <div class="proj-card-meta">
+                <span class="proj-category-tag">IoT · Embedded Systems</span>
+                <span class="proj-year">2024</span>
+              </div>
+              <h3 class="proj-title">Smart Parking System</h3>
+              <p class="proj-excerpt">
+                IoT-based parking slot detector using ultrasonic &amp; IR sensors with
+                real-time LCD display and web notification system.
+              </p>
+              <div class="proj-tech-row">
+                <!-- Tech tags for quick visual scanning -->
+                <span class="proj-tech">Arduino</span>
+                <span class="proj-tech">C</span>
+                <span class="proj-tech">IoT</span>
+                <span class="proj-tech">Sensors</span>
+              </div>
+              <!-- Footer actions: clicking "Details →" also triggers modal for "parking" -->
+              <div class="proj-card-actions">
+                <button
+                  class="proj-detail-btn"
+                  data-open-modal="parking"
+                  aria-haspopup="dialog"
+                  aria-controls="proj-modal-parking"
+                  type="button"
+                >
+                  Details →
+                </button>
+                <a
+                  href="https://github.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="proj-gh-link"
+                  aria-label="View Smart Parking System on GitHub"
+                >
+                  <!-- GitHub icon SVG -->
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+                  GitHub
+                </a>
+              </div>
+            </div>
+
+            <!-- Card hover glow overlay -->
+            <div class="proj-card-glow" aria-hidden="true"></div>
+          </article>
+
+          <!-- ── CARD 2: Java OOP Bank Simulator ────────────────────────────
+               data-project="java" links this card to #proj-modal-java.
+               Thumbnail shows project-java.jpg (Java OOP magic circle art).
+          ─────────────────────────────────────────────────────────────────── -->
+          <article
+            class="proj-card anime-card-glass"
+            data-project="java"
+            id="proj-card-java"
+            tabindex="0"
+            aria-label="Java OOP Bank Simulator project — click to view details"
+          >
+            <div class="proj-thumb-wrapper">
+              <img
+                src="project-java.jpg"
+                alt="Java OOP concepts visualized as magical spell diagrams"
+                class="proj-thumb-img"
+                loading="lazy"
+                width="600"
+                height="338"
+              />
+              <!-- Overlay button — opens modal for "java" -->
+              <button
+                class="proj-thumb-btn"
+                data-open-modal="java"
+                aria-haspopup="dialog"
+                aria-controls="proj-modal-java"
+                type="button"
+              >
+                <span class="proj-thumb-btn-icon" aria-hidden="true">🔍</span>
+                <span>View Details</span>
+              </button>
+              <span class="proj-status-badge proj-status-oop">☕ OOP</span>
+            </div>
+
+            <div class="proj-card-body">
+              <div class="proj-card-meta">
+                <span class="proj-category-tag">Java · Object-Oriented</span>
+                <span class="proj-year">2023</span>
+              </div>
+              <h3 class="proj-title">Bank Account Simulator</h3>
+              <p class="proj-excerpt">
+                A full OOP-based banking system built in Java demonstrating inheritance,
+                polymorphism, encapsulation, and interface-driven design.
+              </p>
+              <div class="proj-tech-row">
+                <span class="proj-tech">Java</span>
+                <span class="proj-tech">OOP</span>
+                <span class="proj-tech">Interfaces</span>
+                <span class="proj-tech">Patterns</span>
+              </div>
+              <div class="proj-card-actions">
+                <!-- "Details →" button — opens modal for "java" -->
+                <button
+                  class="proj-detail-btn"
+                  data-open-modal="java"
+                  aria-haspopup="dialog"
+                  aria-controls="proj-modal-java"
+                  type="button"
+                >
+                  Details →
+                </button>
+                <a
+                  href="https://github.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="proj-gh-link"
+                  aria-label="View Bank Account Simulator on GitHub"
+                >
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+                  GitHub
+                </a>
+              </div>
+            </div>
+
+            <div class="proj-card-glow" aria-hidden="true"></div>
+          </article>
+
+          <!-- ── CARD 3: Python Task Automator ──────────────────────────────
+               data-project="python" links this card to #proj-modal-python.
+               Thumbnail shows project-python.jpg (anime robot + Python code).
+          ─────────────────────────────────────────────────────────────────── -->
+          <article
+            class="proj-card anime-card-glass"
+            data-project="python"
+            id="proj-card-python"
+            tabindex="0"
+            aria-label="Python Task Automator project — click to view details"
+          >
+            <div class="proj-thumb-wrapper">
+              <img
+                src="project-python.jpg"
+                alt="Python automation with a cute anime robot assistant"
+                class="proj-thumb-img"
+                loading="lazy"
+                width="600"
+                height="338"
+              />
+              <!-- Overlay button — opens modal for "python" -->
+              <button
+                class="proj-thumb-btn"
+                data-open-modal="python"
+                aria-haspopup="dialog"
+                aria-controls="proj-modal-python"
+                type="button"
+              >
+                <span class="proj-thumb-btn-icon" aria-hidden="true">🔍</span>
+                <span>View Details</span>
+              </button>
+              <span class="proj-status-badge proj-status-python">🐍 Python</span>
+            </div>
+
+            <div class="proj-card-body">
+              <div class="proj-card-meta">
+                <span class="proj-category-tag">Python · Automation</span>
+                <span class="proj-year">2023</span>
+              </div>
+              <h3 class="proj-title">Python Task Automator</h3>
+              <p class="proj-excerpt">
+                A collection of Python automation scripts for file organisation,
+                web scraping, report generation, and repetitive task scheduling.
+              </p>
+              <div class="proj-tech-row">
+                <span class="proj-tech">Python</span>
+                <span class="proj-tech">File I/O</span>
+                <span class="proj-tech">Scripting</span>
+                <span class="proj-tech">APIs</span>
+              </div>
+              <div class="proj-card-actions">
+                <!-- "Details →" button — opens modal for "python" -->
+                <button
+                  class="proj-detail-btn"
+                  data-open-modal="python"
+                  aria-haspopup="dialog"
+                  aria-controls="proj-modal-python"
+                  type="button"
+                >
+                  Details →
+                </button>
+                <a
+                  href="https://github.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="proj-gh-link"
+                  aria-label="View Python Task Automator on GitHub"
+                >
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+                  GitHub
+                </a>
+              </div>
+            </div>
+
+            <div class="proj-card-glow" aria-hidden="true"></div>
+          </article>
+
+        </div><!-- /proj-grid -->
+
+      </div>
+    </section>
+
+    <!-- =================================================================
+         PROJECT DETAIL MODALS
+         Each modal id="proj-modal-{key}" matches data-project="{key}" on
+         its card. JavaScript reads data-open-modal on click and sets
+         aria-hidden="false" + adds class "open" to the matching modal.
+         Clicking the backdrop or ✕ button closes the active modal.
+    ================================================================== -->
+
+    <!-- Modal: Smart Parking System (connected to data-project="parking") -->
+    <div
+      id="proj-modal-parking"
+      class="proj-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modal-title-parking"
+      aria-hidden="true"
+    >
+      <div class="proj-modal-backdrop" data-close-modal></div>
+      <div class="proj-modal-panel anime-card-glass">
+        <!-- Close button — dismisses this modal -->
+        <button class="proj-modal-close" data-close-modal aria-label="Close project detail panel" type="button">
+          <span aria-hidden="true">✕</span>
+        </button>
+
+        <!-- Hero thumbnail inside modal -->
+        <div class="proj-modal-thumb">
+          <img src="project-parking.jpg" alt="Smart Parking System sensor network illustration" />
+        </div>
+
+        <div class="proj-modal-content">
+          <div class="proj-modal-meta">
+            <span class="tl-badge tl-badge-project">🚀 B.E. Project</span>
+            <span class="proj-year">2024</span>
+          </div>
+          <h3 id="modal-title-parking" class="proj-modal-title">Smart Parking System Using Sensors</h3>
+          <p class="proj-modal-place">
+            🏛️ Adhichunchangiri Institute of Technology, Chikkamagaluru
+          </p>
+
+          <p class="proj-modal-desc">
+            Designed and built a fully functional IoT-enabled smart parking management system as part of my
+            B.E. engineering coursework. The system employs <strong>ultrasonic sensors</strong> and
+            <strong>IR (infrared) sensors</strong> mounted at each parking slot to detect whether a vehicle
+            is present in real time.
+          </p>
+          <p class="proj-modal-desc">
+            The occupancy data is aggregated by an Arduino microcontroller, which drives a 16×2 LCD display
+            showing the number of free and occupied slots. A web-based dashboard was also prototyped to
+            allow remote monitoring of parking slot status, bridging embedded hardware with software interfaces.
+          </p>
+
+          <h4 class="proj-modal-section-title">Key Features</h4>
+          <ul class="proj-modal-features">
+            <li>⚡ Real-time slot detection using HC-SR04 ultrasonic sensors</li>
+            <li>📡 IR sensors as a redundant occupancy check layer</li>
+            <li>🖥️ Live LCD display showing available / total slots</li>
+            <li>🌐 Prototype web dashboard for remote monitoring</li>
+            <li>🔋 Low power consumption embedded design</li>
+          </ul>
+
+          <div class="proj-tech-row" style="margin-top:1rem;">
+            <span class="proj-tech">Arduino Uno</span>
+            <span class="proj-tech">HC-SR04</span>
+            <span class="proj-tech">IR Sensors</span>
+            <span class="proj-tech">16×2 LCD</span>
+            <span class="proj-tech">Embedded C</span>
+            <span class="proj-tech">IoT</span>
+          </div>
+
+          <div class="proj-modal-actions">
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="btn btn-primary anime-btn-neon">
+              <span>⚙️</span> View on GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal: Java OOP Bank Simulator (connected to data-project="java") -->
+    <div
+      id="proj-modal-java"
+      class="proj-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modal-title-java"
+      aria-hidden="true"
+    >
+      <div class="proj-modal-backdrop" data-close-modal></div>
+      <div class="proj-modal-panel anime-card-glass">
+        <button class="proj-modal-close" data-close-modal aria-label="Close project detail panel" type="button">
+          <span aria-hidden="true">✕</span>
+        </button>
+        <div class="proj-modal-thumb">
+          <img src="project-java.jpg" alt="Java OOP magic circle class diagram" />
+        </div>
+        <div class="proj-modal-content">
+          <div class="proj-modal-meta">
+            <span class="tl-badge tl-badge-edu">☕ Java</span>
+            <span class="proj-year">2023</span>
+          </div>
+          <h3 id="modal-title-java" class="proj-modal-title">Bank Account Management System</h3>
+          <p class="proj-modal-place">🏛️ Academic Project — B.E. Computer Science</p>
+
+          <p class="proj-modal-desc">
+            A comprehensive, console-based banking application built entirely in Java to demonstrate mastery of
+            Object-Oriented Programming principles. The system models real banking operations — account creation,
+            deposits, withdrawals, and transaction history — using a class hierarchy rooted in an abstract
+            <code>BankAccount</code> base class.
+          </p>
+          <p class="proj-modal-desc">
+            The design applies all four OOP pillars: <strong>encapsulation</strong> (private fields with getters/setters),
+            <strong>inheritance</strong> (SavingsAccount and CurrentAccount extending BankAccount),
+            <strong>polymorphism</strong> (overridden calculateInterest() methods), and
+            <strong>abstraction</strong> (interfaces for Transferable and Auditable operations).
+          </p>
+
+          <h4 class="proj-modal-section-title">Key Features</h4>
+          <ul class="proj-modal-features">
+            <li>☕ Abstract class + interface-based architecture</li>
+            <li>🏗️ Inheritance: Savings, Current, and Fixed Deposit accounts</li>
+            <li>🔄 Polymorphic interest calculation per account type</li>
+            <li>📋 Full transaction history with formatted console output</li>
+            <li>🔐 Input validation and exception handling</li>
+          </ul>
+
+          <div class="proj-tech-row" style="margin-top:1rem;">
+            <span class="proj-tech">Java</span>
+            <span class="proj-tech">OOP</span>
+            <span class="proj-tech">Inheritance</span>
+            <span class="proj-tech">Interfaces</span>
+            <span class="proj-tech">Exception Handling</span>
+          </div>
+
+          <div class="proj-modal-actions">
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="btn btn-primary anime-btn-neon">
+              <span>☕</span> View on GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal: Python Task Automator (connected to data-project="python") -->
+    <div
+      id="proj-modal-python"
+      class="proj-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modal-title-python"
+      aria-hidden="true"
+    >
+      <div class="proj-modal-backdrop" data-close-modal></div>
+      <div class="proj-modal-panel anime-card-glass">
+        <button class="proj-modal-close" data-close-modal aria-label="Close project detail panel" type="button">
+          <span aria-hidden="true">✕</span>
+        </button>
+        <div class="proj-modal-thumb">
+          <img src="project-python.jpg" alt="Python automation anime robot at a glowing terminal" />
+        </div>
+        <div class="proj-modal-content">
+          <div class="proj-modal-meta">
+            <span class="tl-badge" style="color:var(--accent-cyan);background:rgba(6,182,212,0.1);border:1px solid rgba(6,182,212,0.3);">🐍 Python</span>
+            <span class="proj-year">2023</span>
+          </div>
+          <h3 id="modal-title-python" class="proj-modal-title">Python Task Automator</h3>
+          <p class="proj-modal-place">🐍 Personal Project — Python Scripting</p>
+
+          <p class="proj-modal-desc">
+            A modular collection of Python scripts built to automate repetitive daily workflows. The project
+            covers a range of real-world automation scenarios — from organising a chaotic downloads folder
+            to pulling live data from public APIs and generating formatted PDF reports automatically.
+          </p>
+          <p class="proj-modal-desc">
+            Developed to sharpen Python's standard library skills (os, shutil, datetime, json) alongside
+            third-party tools. Each script is standalone and documented, making the toolkit easy to extend
+            for future automation tasks.
+          </p>
+
+          <h4 class="proj-modal-section-title">Scripts Included</h4>
+          <ul class="proj-modal-features">
+            <li>📂 File Organiser — sorts downloads by type into named folders</li>
+            <li>🌐 Web Data Fetcher — pulls JSON from public APIs &amp; formats output</li>
+            <li>📊 Report Generator — creates CSV summaries from raw data files</li>
+            <li>⏰ Task Scheduler — runs scripts on a time-based cron trigger</li>
+            <li>🔔 Notification Bot — sends system alerts on script completion</li>
+          </ul>
+
+          <div class="proj-tech-row" style="margin-top:1rem;">
+            <span class="proj-tech">Python 3</span>
+            <span class="proj-tech">os / shutil</span>
+            <span class="proj-tech">requests</span>
+            <span class="proj-tech">json</span>
+            <span class="proj-tech">datetime</span>
+          </div>
+
+          <div class="proj-modal-actions">
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="btn btn-primary anime-btn-neon">
+              <span>🐍</span> View on GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ======================================================================= -->
+    <!-- 6. VIDEO SHOWCASE SECTION — Portfolio Introduction                      -->
+    <!-- ======================================================================= -->
+    <!--
+      Video Section:
+      - Responsive YouTube embed using aspect-ratio: 16/9 CSS technique.
+        The iframe fills 100% of its wrapper, no fixed px height needed.
+      - Wrapped in a pixel-art / anime-aesthetic frame with neon borders.
+      - A short caption below the video explains its content.
+      - Replace the YouTube video ID in the iframe src with your own video URL.
+    -->
+    <section id="video" class="section video-section" aria-labelledby="video-heading">
+      <div class="container">
+
+        <!-- Section Header -->
+        <div class="section-header">
+          <div class="section-eyebrow">
+            <span class="japanese-script">紹介動画 // INTRO VIDEO</span>
+            <span class="role-divider">•</span>
+            <span class="role-text">PORTFOLIO HIGHLIGHT</span>
+          </div>
+          <h2 id="video-heading" class="section-title">Watch My Introduction</h2>
+          <p class="section-subtitle">
+            A quick walkthrough of my journey, projects, and what I'm building next. 🎬
+          </p>
+        </div>
+
+        <!-- Video Frame Wrapper -->
+        <div class="video-frame-outer">
+
+          <!-- Pixel-art corner decorators (pure CSS, aria-hidden) -->
+          <span class="vid-corner vid-corner-tl" aria-hidden="true"></span>
+          <span class="vid-corner vid-corner-tr" aria-hidden="true"></span>
+          <span class="vid-corner vid-corner-bl" aria-hidden="true"></span>
+          <span class="vid-corner vid-corner-br" aria-hidden="true"></span>
+
+          <!-- Scanline overlay for pixel-art / retro-anime CRT effect -->
+          <div class="vid-scanlines" aria-hidden="true"></div>
+
+          <!--
+            RESPONSIVE YOUTUBE EMBED:
+            - .vid-responsive-wrapper uses aspect-ratio: 16/9 so the container
+              always maintains widescreen proportions, eliminating the need for
+              a hard-coded height. The iframe is set to width/height 100% inside.
+            - loading="lazy" defers the iframe until it's near the viewport,
+              keeping initial page load fast.
+            - title attribute is required for screen reader accessibility.
+            - To use YOUR video: replace the YouTube video ID in the src URL.
+              The current ID "dQw4w9WgXcQ" is a placeholder — swap it for your own
+              e.g. src="https://www.youtube.com/embed/YOUR_VIDEO_ID?..."
+          -->
+          <div class="vid-responsive-wrapper">
+            <iframe
+              id="portfolio-intro-video"
+              class="vid-iframe"
+              src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0&modestbranding=1&color=white&iv_load_policy=3"
+              title="Dharini M S — Portfolio Introduction Video"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+              loading="lazy"
+              referrerpolicy="strict-origin-when-cross-origin"
+            ></iframe>
+          </div>
+
+        </div>
+        <!-- /video-frame-outer -->
+
+        <!-- Video Caption Card -->
+        <figure class="video-caption-card anime-card-glass">
+          <figcaption class="vid-caption-body">
+
+            <!-- Caption icon + label -->
+            <div class="vid-caption-header">
+              <span class="vid-caption-icon" aria-hidden="true">🎬</span>
+              <span class="vid-caption-label">What's in this video?</span>
+            </div>
+
+            <p class="vid-caption-text">
+              This short video is a personal introduction to my engineering portfolio — covering
+              my academic background from <strong>St. Mary's English Medium School</strong> through
+              my ongoing <strong>B.E. at AIT Chikkamagaluru</strong>, a live walkthrough of the
+              <strong>Smart Parking System</strong> project, and a glimpse into the technologies
+              I'm passionate about: Java, C, and Python.
+            </p>
+
+            <!-- Quick meta chips below the caption -->
+            <div class="vid-caption-chips">
+              <span class="vid-chip">
+                <span aria-hidden="true">⏱️</span> ~3 min
+              </span>
+              <span class="vid-chip">
+                <span aria-hidden="true">🎓</span> B.E. Student
+              </span>
+              <span class="vid-chip">
+                <span aria-hidden="true">🚗</span> Smart Parking Demo
+              </span>
+              <span class="vid-chip">
+                <span aria-hidden="true">💻</span> Java · C · Python
+              </span>
+            </div>
+
+          </figcaption>
+        </figure>
+
+      </div>
+    </section>
+
+    <!-- ======================================================================= -->
+    <!-- 7. TESTIMONIALS SECTION                                                 -->
+    <!-- ======================================================================= -->
+    <!-- 
+      Testimonials Section:
+      - Recommendations & endorsements from peers, tech leads, and mentors.
+    -->
+    <section id="testimonials" class="section testimonials-section" aria-labelledby="testimonials-heading">
+      <div class="container">
+        
+        <div class="section-header">
+          <div class="section-eyebrow">
+            <span class="japanese-script">推薦の言葉 // FEEDBACK</span>
+            <span class="role-divider">•</span>
+            <span class="role-text">TESTIMONIALS</span>
+          </div>
+          <h2 id="testimonials-heading" class="section-title">What People Say</h2>
+          <p class="section-subtitle">Feedback from my professors, project teammates, and mentors.</p>
+        </div>
+
+        <div class="testimonials-grid">
+          
+          <!-- Testimonial 1 -->
+          <article class="testimonial-card anime-card-glass">
+            <div class="testimonial-rating" aria-label="5 out of 5 stars">
+              ⭐⭐⭐⭐⭐
+            </div>
+            <p class="testimonial-quote">
+              “Dharini demonstrated exceptional technical skills during the Smart Parking System project. 
+              Her ability to seamlessly integrate hardware sensors with software logic in Embedded C and Arduino is remarkable for a B.E. student.”
+            </p>
+            <footer class="testimonial-author">
+              <div class="author-avatar-badge">🎓</div>
+              <div class="author-info">
+                <cite class="author-name">Dr. M. S. Kumar</cite>
+                <span class="author-role">Professor, AIT Chikkamagaluru</span>
+              </div>
+            </footer>
+          </article>
+
+          <!-- Testimonial 2 -->
+          <article class="testimonial-card anime-card-glass">
+            <div class="testimonial-rating" aria-label="5 out of 5 stars">
+              ⭐⭐⭐⭐⭐
+            </div>
+            <p class="testimonial-quote">
+              “An incredibly dedicated teammate. Whether we were debugging Java OOP assignments or 
+              fine-tuning Python automation scripts, Dharini's logical approach and clean code always saved the day.”
+            </p>
+            <footer class="testimonial-author">
+              <div class="author-avatar-badge">⚡</div>
+              <div class="author-info">
+                <cite class="author-name">Aditya R.</cite>
+                <span class="author-role">B.E. Classmate & Hackathon Partner</span>
+              </div>
+            </footer>
+          </article>
+
+          <!-- Testimonial 3 -->
+          <article class="testimonial-card anime-card-glass">
+            <div class="testimonial-rating" aria-label="5 out of 5 stars">
+              ⭐⭐⭐⭐⭐
+            </div>
+            <p class="testimonial-quote">
+              “I had the pleasure of mentoring Dharini during an IoT bootcamp. 
+              She is a fast learner with a keen eye for both system architecture and user-facing design. A promising software engineer.”
+            </p>
+            <footer class="testimonial-author">
+              <div class="author-avatar-badge">✨</div>
+              <div class="author-info">
+                <cite class="author-name">Priya Sharma</cite>
+                <span class="author-role">Senior IoT Engineer</span>
+              </div>
+            </footer>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================================= -->
+    <!-- 7. CHAT SECTION (LIVE TERMINAL / TRANSMISSION)                         -->
+    <!-- ======================================================================= -->
+    <!-- 
+      Chat Section:
+      - Interactive holographic terminal allowing visitors to converse with 
+        an AI developer familiar or test instant queries.
+    -->
+    <section id="chat" class="section chat-section" aria-labelledby="chat-heading">
+      <div class="container chat-container">
+        
+        <div class="section-header">
+          <div class="section-eyebrow">
+            <span class="japanese-script">リアルタイム通信</span>
+            <span class="role-divider">•</span>
+            <span class="role-text">DIRECT HOLO-TRANSMISSION</span>
+          </div>
+          <h2 id="chat-heading" class="section-title">Live Terminal Chat</h2>
+          <p class="section-subtitle">Transmit an instant message or query my AI familiar about projects, tech stack, and quests.</p>
+        </div>
+
+        <div class="chat-terminal-card anime-card-glass">
+          
+          <!-- Terminal Title Bar -->
+          <div class="chat-terminal-header">
+            <div class="terminal-dots" aria-hidden="true">
+              <span class="terminal-dot red"></span>
+              <span class="terminal-dot yellow"></span>
+              <span class="terminal-dot green"></span>
+            </div>
+            <div class="terminal-title">
+              <span class="terminal-icon" aria-hidden="true">💬</span>
+              <span>DevFamiliar // TRANSMISSION STREAM</span>
+            </div>
+            <div class="terminal-status">
+              <span class="pulse-dot" aria-hidden="true"></span>
+              <span>ONLINE</span>
+            </div>
+          </div>
+
+          <!-- Chat Conversation Log -->
+          <div class="chat-messages" id="chat-messages" role="log" aria-live="polite">
+            <div class="chat-bubble bot-message">
+              <div class="bubble-sender">🌸 DevFamiliar [AI]</div>
+              <div class="bubble-text">
+                Konnichiwa! I am Dharini's digital familiar. How can I assist you today? 
+                Feel free to click a prompt below or type your message!
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Suggestion Prompt Chips -->
+          <div class="chat-chips-row" aria-label="Suggested questions">
+            <button class="chat-chip" type="button" data-question="What is your core tech stack?">
+              ⚡ Core Tech Stack
+            </button>
+            <button class="chat-chip" type="button" data-question="Are you open to full-time roles or contracts?">
+              💼 Work Availability
+            </button>
+            <button class="chat-chip" type="button" data-question="What is your favorite project built?">
+              ⚔️ Featured Project
+            </button>
+          </div>
+
+          <!-- Chat Input Form -->
+          <form class="chat-input-form" id="chat-input-form">
+            <input 
+              type="text" 
+              id="chat-user-input" 
+              class="chat-input-field" 
+              placeholder="Type your message or prompt here..." 
+              required
+              aria-label="Chat message input"
+            >
+            <button type="submit" class="btn btn-primary anime-btn-neon chat-send-btn">
+              <span>Send</span> ➜
+            </button>
+          </form>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================================= -->
+    <!-- 8. CONTACT SECTION PLACEHOLDER                                          -->
+    <!-- ======================================================================= -->
+    <!-- 
+      Contact Section:
+      - Direct contact information, contact form, and meeting scheduling links
+    -->
+    <section id="contact" class="section contact-section" aria-labelledby="contact-heading">
+      <div class="container contact-container">
+        
+        <div class="section-header">
+          <div class="section-eyebrow">
+            <span class="japanese-script">通信リンク // SECURE LINK</span>
+            <span class="role-divider">•</span>
+            <span class="role-text">GET IN TOUCH</span>
+          </div>
+          <h2 id="contact-heading" class="section-title">Initiate Contact</h2>
+          <p class="section-subtitle">Have a project in mind or just want to say hi? My inbox is always open.</p>
+        </div>
+
+        <div class="contact-card anime-card-glass">
+          
+          <!-- Contact Info Side -->
+          <div class="contact-info-side">
+            <h3 class="contact-side-title">Connect with Me</h3>
+            <p class="contact-side-desc">
+              Currently open to new opportunities, internships, and collaborative projects. 
+              Let's build something amazing together!
+            </p>
+            
+            <ul class="contact-details-list">
+              <li>
+                <span class="contact-icon" aria-hidden="true">📍</span>
+                <div class="contact-detail-text">
+                  <strong>Location</strong>
+                  <span>Chikkamagaluru, Karnataka</span>
+                </div>
+              </li>
+              <li>
+                <span class="contact-icon" aria-hidden="true">🎓</span>
+                <div class="contact-detail-text">
+                  <strong>Education</strong>
+                  <span>AIT Chikkamagaluru (B.E.)</span>
+                </div>
+              </li>
+              <li>
+                <span class="contact-icon" aria-hidden="true">📧</span>
+                <div class="contact-detail-text">
+                  <strong>Email</strong>
+                  <a href="mailto:dharinims90@gmail.com" class="contact-link">dharinims90@gmail.com</a>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Contact Form Side -->
+          <div class="contact-form-side">
+            
+            <!-- Success Message Banner (Hidden by default) -->
+            <div id="contact-success-msg" class="contact-success-banner" aria-hidden="true" style="display: none;">
+              <span class="success-icon">✅</span>
+              <div>
+                <strong>Transmission Successful!</strong>
+                <p>Thank you for reaching out. I'll get back to you as soon as possible.</p>
+              </div>
+            </div>
+
+            <!-- Form -->
+            <form id="contact-form" class="contact-form">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="contact-name">Name</label>
+                  <input type="text" id="contact-name" name="name" required placeholder="Enter your name" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label for="contact-email">Email</label>
+                  <input type="email" id="contact-email" name="email" required placeholder="your.email@example.com" class="form-control">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="contact-message">Message</label>
+                <textarea id="contact-message" name="message" rows="5" required placeholder="How can I help you?" class="form-control"></textarea>
+              </div>
+
+              <!-- Submit button: explicitly styled for high contrast -->
+              <button type="submit" id="contact-submit-btn" class="btn btn-primary anime-btn-neon contact-submit-btn">
+                <span>Send Transmission</span> ➜
+              </button>
+            </form>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========================================================================= -->
+  <!-- ========================================================================= -->
+  <!-- FOOTER (ANIME AESTHETIC CYBER-HUD & EVENLY-SPACED SOCIAL MATRIX)         -->
+  <!-- ========================================================================= -->
+  <footer class="site-footer" id="site-footer" role="contentinfo" aria-label="Site Footer">
+    
+    <!-- Neon Top Gradient Accent Line (Animated glow sweep) -->
+    <div class="footer-top-accent" aria-hidden="true"></div>
+
+    <div class="container footer-container">
+      
+      <!-- Upper Main Footer Grid -->
+      <div class="footer-main-grid">
+
+        <!-- Column 1: Brand & Anime Identity -->
+        <div class="footer-brand-col">
+          <div class="footer-brand-header">
+            <a href="#hero" class="footer-brand-logo" aria-label="Dharini M S Home">
+              <span class="footer-crest-badge" aria-hidden="true">🌸</span>
+              <span class="footer-brand-text">
+                <span class="brand-bracket">&lt;</span>Dharini M S<span class="brand-bracket"> /&gt;</span>
+              </span>
+            </a>
+            <div class="footer-anime-pill" title="Status: Online &amp; Ready for collaborative quests">
+              <span class="footer-pulse-dot" aria-hidden="true"></span>
+              <span class="footer-pill-text">NODE: TOKYO-01 // LVL 99</span>
+            </div>
+          </div>
+
+          <p class="footer-bio">
+            Full-Stack Software Engineer crafting scalable cloud architectures, 
+            high-performance backends, and elegant anime-inspired digital realms.
+          </p>
+
+          <div class="footer-location-tag">
+            <span class="loc-pin" aria-hidden="true">📍</span>
+            <span>Chikkamagaluru, Karnataka, India</span>
+            <span class="loc-divider" aria-hidden="true">•</span>
+            <span class="loc-status">Available Worldwide</span>
+          </div>
+        </div>
+
+        <!-- Column 2: Navigation Quick Links -->
+        <div class="footer-nav-col">
+          <div class="footer-col-header">
+            <span class="footer-col-kanji" aria-hidden="true">案内</span>
+            <h3 class="footer-col-title">Portal Map</h3>
+          </div>
+          <nav class="footer-nav-links" aria-label="Footer Section Navigation">
+            <ul class="footer-links-list">
+              <li><a href="#hero" class="footer-nav-item"><span class="link-kanji" aria-hidden="true">起点</span> Home</a></li>
+              <li><a href="#about" class="footer-nav-item"><span class="link-kanji" aria-hidden="true">自己</span> About Me</a></li>
+              <li><a href="#skills" class="footer-nav-item"><span class="link-kanji" aria-hidden="true">技術</span> Skills</a></li>
+              <li><a href="#timeline" class="footer-nav-item"><span class="link-kanji" aria-hidden="true">年表</span> Timeline</a></li>
+              <li><a href="#projects" class="footer-nav-item"><span class="link-kanji" aria-hidden="true">成果</span> Projects</a></li>
+              <li><a href="#testimonials" class="footer-nav-item"><span class="link-kanji" aria-hidden="true">推薦</span> Testimonials</a></li>
+              <li><a href="#chat" class="footer-nav-item"><span class="link-kanji" aria-hidden="true">通信</span> AI Chat</a></li>
+              <li><a href="#contact" class="footer-nav-item"><span class="link-kanji" aria-hidden="true">連絡</span> Contact</a></li>
+            </ul>
+          </nav>
+        </div>
+
+        <!-- Column 3: Social Media Hub with Evenly Spaced Anime Icons -->
+        <div class="footer-social-col">
+          <div class="footer-col-header">
+            <span class="footer-col-kanji" aria-hidden="true">交信</span>
+            <h3 class="footer-col-title">Connect &amp; Socials</h3>
+          </div>
+          <p class="footer-social-desc">
+            Evenly linked across the cyber cosmos. Reach out for engineering roles, open-source quests, or technical conversations:
+          </p>
+
+          <!-- Evenly Spaced Anime Social Media Icons List -->
+          <nav class="footer-social-nav" aria-label="Social media and professional profiles">
+            <ul class="footer-social-list" role="list">
+
+              <!-- 1. GitHub -->
+              <li class="footer-social-item">
+                <a 
+                  href="https://github.com/dharinims90-cmd" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  class="footer-social-btn btn-github"
+                  aria-label="GitHub Profile: dharinims90-cmd (opens in new tab)"
+                >
+                  <span class="social-icon-wrapper" aria-hidden="true">
+                    <svg class="social-svg" viewBox="0 0 24 24" width="22" height="22" fill="currentColor" focusable="false">
+                      <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+                    </svg>
+                  </span>
+                  <!-- Floating Anime Tooltip -->
+                  <span class="social-tooltip" role="tooltip" aria-hidden="true">
+                    <span class="tooltip-title">GitHub</span>
+                    <span class="tooltip-kanji">開発</span>
+                  </span>
+                </a>
+              </li>
+
+              <!-- 2. LinkedIn -->
+              <li class="footer-social-item">
+                <a 
+                  href="https://www.linkedin.com/in/dharini-m-s-33359140a" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  class="footer-social-btn btn-linkedin"
+                  aria-label="LinkedIn Profile: Dharini M S (opens in new tab)"
+                >
+                  <span class="social-icon-wrapper" aria-hidden="true">
+                    <svg class="social-svg" viewBox="0 0 24 24" width="22" height="22" fill="currentColor" focusable="false">
+                      <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
+                    </svg>
+                  </span>
+                  <!-- Floating Anime Tooltip -->
+                  <span class="social-tooltip" role="tooltip" aria-hidden="true">
+                    <span class="tooltip-title">LinkedIn</span>
+                    <span class="tooltip-kanji">経歴</span>
+                  </span>
+                </a>
+              </li>
+
+              <!-- 3. Direct Email -->
+              <li class="footer-social-item">
+                <a 
+                  href="mailto:dharinims90@gmail.com" 
+                  class="footer-social-btn btn-email"
+                  aria-label="Send Email directly to dharinims90@gmail.com"
+                >
+                  <span class="social-icon-wrapper" aria-hidden="true">
+                    <svg class="social-svg" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false">
+                      <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                      <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                    </svg>
+                  </span>
+                  <!-- Floating Anime Tooltip -->
+                  <span class="social-tooltip" role="tooltip" aria-hidden="true">
+                    <span class="tooltip-title">Email</span>
+                    <span class="tooltip-kanji">通信</span>
+                  </span>
+                </a>
+              </li>
+
+              <!-- 4. Code Repositories & Algorithmic Quests -->
+              <li class="footer-social-item">
+                <a 
+                  href="https://github.com/dharinims90-cmd?tab=repositories" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  class="footer-social-btn btn-code"
+                  aria-label="Code Repositories and Algorithmic Quests on GitHub (opens in new tab)"
+                >
+                  <span class="social-icon-wrapper" aria-hidden="true">
+                    <svg class="social-svg" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false">
+                      <polyline points="16 18 22 12 16 6"></polyline>
+                      <polyline points="8 6 2 12 8 18"></polyline>
+                      <line x1="14" y1="4" x2="10" y2="20"></line>
+                    </svg>
+                  </span>
+                  <!-- Floating Anime Tooltip -->
+                  <span class="social-tooltip" role="tooltip" aria-hidden="true">
+                    <span class="tooltip-title">Repositories</span>
+                    <span class="tooltip-kanji">宝庫</span>
+                  </span>
+                </a>
+              </li>
+
+              <!-- 5. Interactive Holo-Terminal Live Chat -->
+              <li class="footer-social-item">
+                <a 
+                  href="#chat" 
+                  class="footer-social-btn btn-terminal"
+                  aria-label="Jump to interactive AI Holo-Terminal Live Chat section"
+                >
+                  <span class="social-icon-wrapper" aria-hidden="true">
+                    <svg class="social-svg" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false">
+                      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                      <path d="M8 9h.01"></path>
+                      <path d="M12 9h.01"></path>
+                      <path d="M16 9h.01"></path>
+                    </svg>
+                  </span>
+                  <!-- Floating Anime Tooltip -->
+                  <span class="social-tooltip" role="tooltip" aria-hidden="true">
+                    <span class="tooltip-title">Holo-Chat</span>
+                    <span class="tooltip-kanji">端末</span>
+                  </span>
+                </a>
+              </li>
+
+            </ul>
+          </nav>
+
+          <!-- Interactive Email Quick-Copy Capsule -->
+          <div class="footer-email-box">
+            <div class="email-box-meta">
+              <span class="email-box-icon" aria-hidden="true">✉️</span>
+              <span class="email-address-text">dharinims90@gmail.com</span>
+            </div>
+            <button 
+              type="button" 
+              id="footer-copy-email-btn" 
+              class="footer-copy-btn" 
+              aria-label="Copy email address dharinims90@gmail.com to clipboard"
+            >
+              <span class="copy-icon" aria-hidden="true">📋</span>
+              <span id="footer-copy-text" class="copy-text">Copy</span>
+            </button>
+            <div id="footer-copy-status" class="sr-only" aria-live="polite"></div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Footer Bottom Bar (Meta & Back to Top) -->
+      <div class="footer-bottom-bar">
+        <div class="footer-bottom-copy">
+          <p>&copy; <span id="current-year">2026</span> <strong>Dharini M S</strong>. All rights reserved.</p>
+          <p class="footer-bottom-subtext">
+            Crafted with <span class="heart-pulse" aria-label="love">💖</span>, anime aesthetic spirit, and semantic accessible CSS.
+          </p>
+        </div>
+
+        <div class="footer-bottom-actions">
+          <a href="#hero" class="footer-back-to-top" id="footer-back-to-top" aria-label="Return to top of page">
+            <span class="back-text">Back to Top</span>
+            <span class="back-arrow" aria-hidden="true">⛩️ &uarr;</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ========================================================================= -->
+  <!-- SCRIPT: THEME TOGGLE (NIGHT MODE) LOGIC & INITIALIZATION                   -->
+  <!-- ========================================================================= -->
+  <script>
+    // Set dynamic current year in footer
+    const yearSpan = document.getElementById('current-year');
+    if (yearSpan) {
+      yearSpan.textContent = new Date().getFullYear();
+    }
+
+    // =========================================================================
+    // FOOTER INTERACTIVE BEHAVIORS: EMAIL COPY & BACK TO TOP
+    // =========================================================================
+    (function initFooterInteractions() {
+      // 1. Interactive 1-Click Email Copy
+      const copyEmailBtn = document.getElementById('footer-copy-email-btn');
+      const copyEmailText = document.getElementById('footer-copy-text');
+      const copyStatus = document.getElementById('footer-copy-status');
+      const emailAddress = 'dharinims90@gmail.com';
+
+      if (copyEmailBtn && copyEmailText) {
+        copyEmailBtn.addEventListener('click', async () => {
+          try {
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+              await navigator.clipboard.writeText(emailAddress);
+            } else {
+              // Legacy clipboard fallback
+              const textArea = document.createElement('textarea');
+              textArea.value = emailAddress;
+              textArea.style.position = 'fixed';
+              textArea.style.left = '-9999px';
+              document.body.appendChild(textArea);
+              textArea.focus();
+              textArea.select();
+              document.execCommand('copy');
+              document.body.removeChild(textArea);
+            }
+
+            const prevLabel = copyEmailText.textContent;
+            copyEmailBtn.classList.add('copied');
+            copyEmailText.textContent = 'Copied! 🌸';
+            if (copyStatus) copyStatus.textContent = 'Email address dharinims90@gmail.com copied to clipboard';
+
+            setTimeout(() => {
+              copyEmailBtn.classList.remove('copied');
+              copyEmailText.textContent = prevLabel;
+              if (copyStatus) copyStatus.textContent = '';
+            }, 2500);
+          } catch (err) {
+            console.warn('Could not copy email to clipboard', err);
+          }
+        });
+      }
+
+      // 2. Accessible Smooth Scroll Back to Top
+      const backToTopBtn = document.getElementById('footer-back-to-top');
+      if (backToTopBtn) {
+        backToTopBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          });
+          // Move focus to main-content or skip link for keyboard users
+          const mainContent = document.getElementById('main-content') || document.body;
+          if (mainContent) {
+            mainContent.setAttribute('tabindex', '-1');
+            mainContent.focus();
+          }
+        });
+      }
+    })();
+
+    // Night Mode Toggle Functionality with CSS Media Query Detection
+    const headerToggleBtn = document.getElementById('night-mode-toggle');
+    const heroToggleBtn = document.getElementById('hero-night-toggle');
+    const themeDetectedText = document.getElementById('theme-detected-text');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+
+    function updateThemeUI(isDark, isExplicit = false) {
+      document.documentElement.classList.toggle('dark', isDark);
+      document.documentElement.classList.toggle('light', !isDark);
+
+      if (headerToggleBtn) headerToggleBtn.setAttribute('aria-pressed', isDark ? 'true' : 'false');
+      if (heroToggleBtn) heroToggleBtn.setAttribute('aria-pressed', isDark ? 'true' : 'false');
+
+      if (themeDetectedText) {
+        if (!isExplicit) {
+          themeDetectedText.textContent = isDark 
+            ? 'Browser Default: Night Mode Detected 🌙' 
+            : 'Browser Default: Day Mode Detected 🌸';
+        } else {
+          themeDetectedText.textContent = isDark 
+            ? 'Manual Theme: Night Mode 🌙' 
+            : 'Manual Theme: Day Mode 🌸';
+        }
+      }
+    }
+
+    // Initialize: check localStorage first, or fall back to CSS media query detection
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+      updateThemeUI(savedTheme === 'dark', true);
+    } else {
+      updateThemeUI(prefersDark.matches, false);
+    }
+
+    // Listen for OS/Browser theme changes via CSS media query
+    prefersDark.addEventListener('change', (e) => {
+      // If user hasn't set an explicit override in this session, adapt dynamically
+      if (!localStorage.getItem('theme')) {
+        updateThemeUI(e.matches, false);
+      }
+    });
+
+    // Toggle event handlers
+    function toggleTheme() {
+      const isCurrentlyDark = document.documentElement.classList.contains('dark');
+      const newThemeIsDark = !isCurrentlyDark;
+      localStorage.setItem('theme', newThemeIsDark ? 'dark' : 'light');
+      updateThemeUI(newThemeIsDark, true);
+    }
+
+    if (headerToggleBtn) headerToggleBtn.addEventListener('click', toggleTheme);
+    if (heroToggleBtn) heroToggleBtn.addEventListener('click', toggleTheme);
+
+    // =========================================================================
+    // VERTICAL NAVBAR & MOBILE DRAWER LOGIC
+    // =========================================================================
+    const verticalNavbar = document.getElementById('vertical-navbar');
+    const mobileNavToggle = document.getElementById('mobile-nav-toggle');
+    const vnavCloseBtn = document.getElementById('vnav-close-btn');
+    const navOverlay = document.getElementById('nav-overlay');
+    const vnavLinks = document.querySelectorAll('.vnav-link');
+    const headerActiveSection = document.getElementById('header-active-section');
+
+    function openMobileNav() {
+      if (verticalNavbar) verticalNavbar.classList.add('open');
+      if (navOverlay) navOverlay.classList.add('active');
+      if (mobileNavToggle) {
+        mobileNavToggle.setAttribute('aria-expanded', 'true');
+        mobileNavToggle.classList.add('active');
+      }
+      document.body.classList.add('mobile-nav-open');
+    }
+
+    function closeMobileNav() {
+      if (verticalNavbar) verticalNavbar.classList.remove('open');
+      if (navOverlay) navOverlay.classList.remove('active');
+      if (mobileNavToggle) {
+        mobileNavToggle.setAttribute('aria-expanded', 'false');
+        mobileNavToggle.classList.remove('active');
+      }
+      document.body.classList.remove('mobile-nav-open');
+    }
+
+    if (mobileNavToggle) {
+      mobileNavToggle.addEventListener('click', () => {
+        const isOpen = verticalNavbar && verticalNavbar.classList.contains('open');
+        if (isOpen) {
+          closeMobileNav();
+        } else {
+          openMobileNav();
+        }
+      });
+    }
+
+    if (vnavCloseBtn) vnavCloseBtn.addEventListener('click', closeMobileNav);
+    if (navOverlay) navOverlay.addEventListener('click', closeMobileNav);
+
+    // Close mobile nav on ESC key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && verticalNavbar && verticalNavbar.classList.contains('open')) {
+        closeMobileNav();
+        if (mobileNavToggle) mobileNavToggle.focus();
+      }
+    });
+
+    // Close drawer when a vertical navigation link is clicked (on mobile)
+    vnavLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        if (window.innerWidth <= 1024) {
+          closeMobileNav();
+        }
+      });
+    });
+
+    // =========================================================================
+    // SCROLL SPY: ACTIVE SECTION HIGHLIGHTING (A11Y & VISUAL)
+    // =========================================================================
+    const sectionIds = ['hero', 'about', 'skills', 'timeline', 'projects', 'testimonials', 'chat', 'contact'];
+    const sectionElements = sectionIds.map(id => document.getElementById(id)).filter(Boolean);
+
+    const sectionLabels = {
+      hero: 'Home',
+      about: 'About Me',
+      skills: 'Skills',
+      timeline: 'Timeline',
+      projects: 'Projects',
+      testimonials: 'Testimonials',
+      chat: 'Chat',
+      contact: 'Contact'
+    };
+
+    if ('IntersectionObserver' in window && sectionElements.length > 0) {
+      const observerOptions = {
+        root: null,
+        rootMargin: '-20% 0px -60% 0px',
+        threshold: 0
+      };
+
+      const sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const currentId = entry.target.id;
+            
+            // Update active state on vertical navbar links
+            vnavLinks.forEach(link => {
+              const target = link.getAttribute('data-section') || link.getAttribute('href').replace('#', '');
+              if (target === currentId) {
+                link.classList.add('active');
+                link.setAttribute('aria-current', 'page');
+              } else {
+                link.classList.remove('active');
+                link.removeAttribute('aria-current');
+              }
+            });
+
+            // Update header breadcrumb indicator
+            if (headerActiveSection && sectionLabels[currentId]) {
+              headerActiveSection.textContent = sectionLabels[currentId];
+            }
+          }
+        });
+      }, observerOptions);
+
+      sectionElements.forEach(sec => sectionObserver.observe(sec));
+    }
+
+    // =========================================================================
+    // INTERACTIVE CHAT TERMINAL SCRIPT
+    // =========================================================================
+    const chatForm = document.getElementById('chat-input-form');
+    const chatInput = document.getElementById('chat-user-input');
+    const chatMessages = document.getElementById('chat-messages');
+    const chatChips = document.querySelectorAll('.chat-chip');
+
+    const botResponses = {
+      'tech stack': "⚡ Core stack: TypeScript, React, Next.js, Node.js, Go, Docker, Kubernetes, PostgreSQL, and AWS!",
+      'availability': "💼 I am currently open to select full-time roles, distributed systems consulting, and advisory quests!",
+      'project': "⚔️ Check out CloudScale (Distributed Rate Limiter in Go) and Synthetix (Wasm Audio Synthesizer) above!",
+      'default': "🌸 Message received through holo-link! Dharini will receive your transmission shortly."
+    };
+
+    function appendMessage(sender, text, isUser = false) {
+      if (!chatMessages) return;
+      const bubble = document.createElement('div');
+      bubble.className = `chat-bubble ${isUser ? 'user-message' : 'bot-message'}`;
+      
+      const senderDiv = document.createElement('div');
+      senderDiv.className = 'bubble-sender';
+      senderDiv.textContent = sender;
+
+      const textDiv = document.createElement('div');
+      textDiv.className = 'bubble-text';
+      textDiv.textContent = text;
+
+      bubble.appendChild(senderDiv);
+      bubble.appendChild(textDiv);
+      chatMessages.appendChild(bubble);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    function handleUserPrompt(userText) {
+      appendMessage('Visitor', userText, true);
+      const lower = userText.toLowerCase();
+
+      setTimeout(() => {
+        let reply = botResponses['default'];
+        if (lower.includes('stack') || lower.includes('skill')) {
+          reply = botResponses['tech stack'];
+        } else if (lower.includes('avail') || lower.includes('role') || lower.includes('hire') || lower.includes('work')) {
+          reply = botResponses['availability'];
+        } else if (lower.includes('project') || lower.includes('work')) {
+          reply = botResponses['project'];
+        }
+        appendMessage('🌸 DevFamiliar [AI]', reply, false);
+      }, 500);
+    }
+
+    if (chatForm && chatInput) {
+      chatForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const msg = chatInput.value.trim();
+        if (msg) {
+          handleUserPrompt(msg);
+          chatInput.value = '';
+        }
+      });
+    }
+
+    chatChips.forEach(chip => {
+      chip.addEventListener('click', () => {
+        const question = chip.getAttribute('data-question');
+        if (question) {
+          handleUserPrompt(question);
+        }
+      });
+    });
+
+    // =========================================================================
+    // ABOUT ME AVATAR SWITCHER (REAL PHOTO VS ANIME AESTHETIC AVATAR)
+    // =========================================================================
+    const aboutProfileImg = document.getElementById('about-profile-img');
+    const btnPhotoReal = document.getElementById('btn-photo-real');
+    const btnPhotoAnime = document.getElementById('btn-photo-anime');
+
+    if (aboutProfileImg && btnPhotoReal && btnPhotoAnime) {
+      btnPhotoReal.addEventListener('click', () => {
+        aboutProfileImg.src = 'WhatsApp Image 2026-10-07 at 10.16.34 AM.jpeg';
+        aboutProfileImg.alt = 'Dharini M S - Software Engineer portrait';
+        btnPhotoReal.classList.add('active');
+        btnPhotoReal.setAttribute('aria-pressed', 'true');
+        btnPhotoAnime.classList.remove('active');
+        btnPhotoAnime.setAttribute('aria-pressed', 'false');
+      });
+
+      btnPhotoAnime.addEventListener('click', () => {
+        aboutProfileImg.src = 'profile-anime.jpg';
+        aboutProfileImg.alt = 'Dharini M S - Anime aesthetic portrait';
+        btnPhotoAnime.classList.add('active');
+        btnPhotoAnime.setAttribute('aria-pressed', 'true');
+        btnPhotoReal.classList.remove('active');
+        btnPhotoReal.setAttribute('aria-pressed', 'false');
+      });
+    }
+
+    // =========================================================================
+    // SKILLS SECTION — XP BAR SCROLL-TRIGGER ANIMATION
+    // Uses Intersection Observer to detect when #skills enters the viewport,
+    // then animates each .skill-xp-fill bar from width:0% to data-progress%.
+    // The observer disconnects after first trigger (one-shot, no re-animation).
+    // =========================================================================
+    const skillsSection = document.getElementById('skills');
+    const xpFills = document.querySelectorAll('.skill-xp-fill');
+
+    if (skillsSection && xpFills.length > 0) {
+      const skillsObserver = new IntersectionObserver(
+        (entries, observer) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              // Animate each bar with a staggered delay for a cascade effect
+              xpFills.forEach((fill, i) => {
+                const targetWidth = fill.getAttribute('data-progress') || '0';
+                // Stagger each bar by 150ms for a sequential anime-style cascade
+                setTimeout(() => {
+                  fill.style.width = targetWidth + '%';
+                }, i * 150);
+              });
+              // Disconnect after first trigger — animation only plays once on scroll-in
+              observer.disconnect();
+            }
+          });
+        },
+        {
+          threshold: 0.25, // Trigger when 25% of skills section is visible
+          rootMargin: '0px 0px -60px 0px'
+        }
+      );
+
+      skillsObserver.observe(skillsSection);
+    }
+
+    // =========================================================================
+    // PROJECT MODAL SYSTEM
+    // How it works:
+    //   1. Every [data-open-modal="key"] element (thumbnail overlay btn &
+    //      "Details →" btn) triggers openModal('key') on click.
+    //   2. openModal() finds #proj-modal-{key}, removes aria-hidden, adds
+    //      class "open", and locks body scroll — showing the detail panel.
+    //   3. closeModal() reverses that: removes "open", restores aria-hidden,
+    //      unlocks scroll, and returns focus to the card that opened it.
+    //   4. Closing works via: ✕ button, clicking the backdrop, or Escape key.
+    // =========================================================================
+    (function () {
+      let lastFocusedCard = null; // Remember which card opened the modal
+
+      function openModal(key) {
+        const modal = document.getElementById('proj-modal-' + key);
+        if (!modal) return;
+        // Save the element that triggered the open (for focus return on close)
+        lastFocusedCard = document.activeElement;
+        modal.classList.add('open');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('modal-open');
+        // Move focus to the close button inside the modal for accessibility
+        const closeBtn = modal.querySelector('.proj-modal-close');
+        if (closeBtn) closeBtn.focus();
+      }
+
+      function closeModal() {
+        const openModal = document.querySelector('.proj-modal.open');
+        if (!openModal) return;
+        openModal.classList.remove('open');
+        openModal.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('modal-open');
+        // Return focus to the card/button that originally opened the modal
+        if (lastFocusedCard) lastFocusedCard.focus();
+      }
+
+      // Attach click listener to the entire document (event delegation):
+      // Handles both [data-open-modal] triggers and [data-close-modal] closers
+      document.addEventListener('click', function (e) {
+        // Open: any element with data-open-modal="key"
+        const opener = e.target.closest('[data-open-modal]');
+        if (opener) {
+          openModal(opener.getAttribute('data-open-modal'));
+          return;
+        }
+        // Close: ✕ button or backdrop (both have data-close-modal)
+        const closer = e.target.closest('[data-close-modal]');
+        if (closer) {
+          closeModal();
+        }
+      });
+
+      // Close on Escape key
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') closeModal();
+      });
+    })();
+
+    // =========================================================================
+    // CHAT TERMINAL SYSTEM
+    // Simulates a conversation with an AI bot.
+    // Handles form submission, appending user bubbles, and simulating bot replies.
+    // Includes comments on where to integrate an actual LLM API.
+    // =========================================================================
+    (function() {
+      const chatForm = document.getElementById('chat-input-form');
+      const chatInput = document.getElementById('chat-user-input');
+      const chatMessagesArea = document.getElementById('chat-messages');
+      const suggestionChips = document.querySelectorAll('.chat-chip');
+
+      // Helper: Scroll chat to bottom
+      function scrollToBottom() {
+        chatMessagesArea.scrollTop = chatMessagesArea.scrollHeight;
+      }
+
+      // Helper: Append a new message bubble to the chat area
+      function appendMessage(text, isUser = false) {
+        const msgDiv = document.createElement('div');
+        msgDiv.className = 'chat-bubble ' + (isUser ? 'user-message' : 'bot-message');
+        
+        const senderDiv = document.createElement('div');
+        senderDiv.className = 'bubble-sender';
+        senderDiv.textContent = isUser ? 'GUEST // USER' : '🌸 DevFamiliar [AI]';
+        
+        const textDiv = document.createElement('div');
+        textDiv.className = 'bubble-text';
+        textDiv.textContent = text;
+        
+        msgDiv.appendChild(senderDiv);
+        msgDiv.appendChild(textDiv);
+        
+        chatMessagesArea.appendChild(msgDiv);
+        scrollToBottom();
+      }
+
+      // Handle suggestion chip clicks
+      suggestionChips.forEach(chip => {
+        chip.addEventListener('click', function() {
+          const questionText = this.getAttribute('data-question');
+          if (questionText) {
+            chatInput.value = questionText;
+            chatInput.focus();
+          }
+        });
+      });
+
+      // Handle form submission (User sends a message)
+      if (chatForm) {
+        chatForm.addEventListener('submit', function(e) {
+          e.preventDefault(); // Prevent page reload
+          
+          const userText = chatInput.value.trim();
+          if (!userText) return;
+
+          // 1. Display User Message
+          appendMessage(userText, true);
+          chatInput.value = ''; // Clear input field
+          
+          // 2. Simulate Bot Processing (Network / typing delay)
+          // ==========================================================
+          // 🚀 API INTEGRATION POINT:
+          // Here is where you would take `userText` and send it via fetch() 
+          // to a backend endpoint or directly to an LLM API (like OpenAI, 
+          // Gemini, Claude) to get a real dynamic response.
+          // Example:
+          // fetch('/api/chat', { method: 'POST', body: JSON.stringify({ message: userText }) })
+          //   .then(res => res.json())
+          //   .then(data => appendMessage(data.reply, false));
+          // ==========================================================
+          
+          // For the frontend static portfolio, we simulate a delay and a generic reply
+          setTimeout(() => {
+            let botReply = "That's an interesting question! I am currently operating in demo mode without a live backend connection, but Dharini would love to discuss this with you directly via email or LinkedIn.";
+            
+            // Basic hardcoded responses for the suggestion chips
+            const lowerText = userText.toLowerCase();
+            if (lowerText.includes("tech stack")) {
+              botReply = "My core stack focuses on backend and automation: Java (OOP, Microservices), C (Embedded Systems, IoT), and Python (Data fetching, Automation scripts).";
+            } else if (lowerText.includes("availability") || lowerText.includes("roles")) {
+              botReply = "Dharini is currently completing her B.E. at AIT Chikkamagaluru and is actively looking for internships and junior software engineering roles!";
+            } else if (lowerText.includes("project")) {
+              botReply = "The Smart Parking System is a highlight! It blends hardware (Arduino, Ultrasonic/IR sensors) with software to solve real-world problems. Check it out in the Projects section above!";
+            }
+
+            appendMessage(botReply, false);
+          }, 800); // 800ms simulated typing delay
+        });
+      }
+    })();
+
+    // =========================================================================
+    // CONTACT FORM SYSTEM
+    // Handles form submission, UI success state toggling, and API integration.
+    // =========================================================================
+    (function() {
+      const contactForm = document.getElementById('contact-form');
+      const successMsg = document.getElementById('contact-success-msg');
+      const submitBtn = document.getElementById('contact-submit-btn');
+
+      if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+          e.preventDefault(); // Prevent standard page reload
+
+          // Provide visual feedback that sending is happening
+          const originalBtnText = submitBtn.innerHTML;
+          submitBtn.innerHTML = '<span>Transmitting...</span> ⏳';
+          submitBtn.disabled = true;
+
+          // Gather form data
+          const formData = {
+            name: document.getElementById('contact-name').value,
+            email: document.getElementById('contact-email').value,
+            message: document.getElementById('contact-message').value
+          };
+
+          // ==========================================================
+          // 🚀 EMAIL SERVICE INTEGRATION POINT (e.g., Resend API)
+          // To make this form actually send emails, replace the setTimeout 
+          // below with a fetch() call to your backend endpoint that uses 
+          // the Resend API (or SendGrid, AWS SES, etc).
+          // 
+          // Example:
+          // fetch('/api/send-email', {
+          //   method: 'POST',
+          //   headers: { 'Content-Type': 'application/json' },
+          //   body: JSON.stringify(formData)
+          // })
+          // .then(response => {
+          //    if(response.ok) { /* show success message */ }
+          // })
+          // ==========================================================
+
+          // Simulate network request for the static demo
+          setTimeout(() => {
+            // Reset button
+            submitBtn.innerHTML = originalBtnText;
+            submitBtn.disabled = false;
+
+            // Show success banner
+            successMsg.style.display = 'flex';
+            successMsg.setAttribute('aria-hidden', 'false');
+
+            // Clear the form fields
+            contactForm.reset();
+
+            // Auto-hide success message after 5 seconds
+            setTimeout(() => {
+              successMsg.style.display = 'none';
+              successMsg.setAttribute('aria-hidden', 'true');
+            }, 5000);
+
+          }, 1200); // 1.2s simulated delay
+        });
+      }
+    })();
+  </script>
+
+</body>
+</html>

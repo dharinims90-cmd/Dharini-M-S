@@ -1,0 +1,4273 @@
+/* ==========================================================================
+   PORTFOLIO DESIGN SYSTEM & ANIME AESTHETIC STYLESHEET
+   Features:
+   - Left-docked Vertical Sidebar Navigation (8 links: Home, About Me, Skills, 
+     Timeline, Projects, Testimonials, Chat, Contact)
+   - CSS Media Query browser theme detection (@media prefers-color-scheme)
+   - Anime aesthetic design: soft sakura daylight & Tokyo cyberpunk neon night
+   - Background image integration (hero-bg.jpg) with glassmorphism overlays
+   - Interactive theme toggle widgets with visual state indicators
+   - Drifting sakura petals, neon glowing accents & character HUD
+   - Responsive layout: Desktop fixed left sidebar & Mobile slide-in drawer
+   - Interactive Testimonials & Live Terminal Chat sections
+   ========================================================================== */
+
+/* --- Custom Properties & Theme Palettes --- */
+
+/* 1. Default / Daylight Sakura Anime Palette (Light Mode) */
+:root {
+  --theme-detected: "Daylight Sakura (Auto-detected)";
+  --bg-primary: #fff5f8;
+  --bg-secondary: #ffffff;
+  --bg-elevated: #ffeef4;
+  --border-color: rgba(244, 114, 182, 0.25);
+  --border-focus: #ec4899;
+
+  --text-primary: #1f1225;
+  --text-secondary: #583e60;
+  --text-muted: #9c7b9e;
+
+  --accent-primary: #ec4899;
+  --accent-primary-hover: #db2777;
+  --accent-secondary: #8b5cf6;
+  --accent-cyan: #06b6d4;
+  --accent-glow: rgba(236, 72, 153, 0.35);
+
+  --badge-bg: rgba(236, 72, 153, 0.12);
+  --badge-text: #db2777;
+
+  /* Vertical Sidebar Theming */
+  --vnav-width: 255px;
+  --vnav-bg: rgba(255, 245, 248, 0.94);
+  --vnav-border: rgba(244, 114, 182, 0.32);
+  --vnav-item-hover: rgba(236, 72, 153, 0.12);
+  --vnav-item-active: rgba(236, 72, 153, 0.18);
+  --vnav-glow: rgba(236, 72, 153, 0.25);
+
+  /* Hero Section Anime Theming */
+  --hero-overlay: linear-gradient(
+    135deg,
+    rgba(255, 245, 248, 0.90) 0%,
+    rgba(255, 235, 245, 0.84) 45%,
+    rgba(240, 245, 255, 0.88) 100%
+  );
+  --hero-card-bg: rgba(255, 255, 255, 0.86);
+  --hero-card-border: rgba(244, 114, 182, 0.45);
+  --hero-shadow: 0 16px 45px rgba(236, 72, 153, 0.18);
+  --hero-text-glow: 0 0 16px rgba(236, 72, 153, 0.35);
+  
+  --hud-bg: rgba(255, 255, 255, 0.92);
+  --hud-border: rgba(244, 114, 182, 0.35);
+
+  --header-blur-bg: rgba(255, 245, 248, 0.88);
+  --card-bg: #ffffff;
+  --card-border: rgba(244, 114, 182, 0.22);
+  --card-shadow: 0 4px 20px -2px rgba(31, 18, 37, 0.06);
+  --card-hover-shadow: 0 12px 28px -4px rgba(236, 72, 153, 0.22);
+
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-heading: 'Outfit', var(--font-sans);
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --transition-speed: 0.3s;
+}
+
+/* ==========================================================================
+   2. AUTOMATIC BROWSER THEME DETECTION VIA CSS MEDIA QUERY
+   When the user's browser/OS default is set to dark theme,
+   this activates the Tokyo Midnight Cyberpunk Anime palette automatically.
+   ========================================================================== */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --theme-detected: "Tokyo Midnight (Auto-detected via Media Query)";
+    --bg-primary: #0a0b16;
+    --bg-secondary: #121326;
+    --bg-elevated: #1a1c35;
+    --border-color: rgba(167, 139, 250, 0.25);
+    --border-focus: #c084fc;
+
+    --text-primary: #fdf4ff;
+    --text-secondary: #c4b5fd;
+    --text-muted: #84729f;
+
+    --accent-primary: #f472b6;
+    --accent-primary-hover: #f687b3;
+    --accent-secondary: #a78bfa;
+    --accent-cyan: #38bdf8;
+    --accent-glow: rgba(244, 114, 182, 0.45);
+
+    --badge-bg: rgba(167, 139, 250, 0.18);
+    --badge-text: #c084fc;
+
+    --vnav-bg: rgba(11, 12, 24, 0.95);
+    --vnav-border: rgba(167, 139, 250, 0.35);
+    --vnav-item-hover: rgba(167, 139, 250, 0.16);
+    --vnav-item-active: rgba(192, 132, 252, 0.22);
+    --vnav-glow: rgba(168, 85, 247, 0.32);
+
+    --hero-overlay: linear-gradient(
+      135deg,
+      rgba(10, 11, 22, 0.92) 0%,
+      rgba(19, 15, 38, 0.86) 50%,
+      rgba(10, 24, 44, 0.92) 100%
+    );
+    --hero-card-bg: rgba(17, 18, 36, 0.84);
+    --hero-card-border: rgba(192, 132, 252, 0.35);
+    --hero-shadow: 0 16px 48px rgba(168, 85, 247, 0.35);
+    --hero-text-glow: 0 0 20px rgba(192, 132, 252, 0.5);
+
+    --hud-bg: rgba(24, 25, 48, 0.9);
+    --hud-border: rgba(192, 132, 252, 0.4);
+
+    --header-blur-bg: rgba(10, 11, 22, 0.88);
+    --card-bg: rgba(18, 19, 38, 0.78);
+    --card-border: rgba(167, 139, 250, 0.3);
+    --card-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.6);
+    --card-hover-shadow: 0 12px 32px -4px rgba(244, 114, 182, 0.28);
+  }
+}
+
+/* 3. Manual Overrides (Explicit User Selection via Toggle) */
+html.light {
+  --bg-primary: #fff5f8;
+  --bg-secondary: #ffffff;
+  --bg-elevated: #ffeef4;
+  --border-color: rgba(244, 114, 182, 0.25);
+  --border-focus: #ec4899;
+  --text-primary: #1f1225;
+  --text-secondary: #583e60;
+  --text-muted: #9c7b9e;
+  --accent-primary: #ec4899;
+  --accent-primary-hover: #db2777;
+  --accent-secondary: #8b5cf6;
+  --accent-cyan: #06b6d4;
+  --accent-glow: rgba(236, 72, 153, 0.35);
+  --badge-bg: rgba(236, 72, 153, 0.12);
+  --badge-text: #db2777;
+  --vnav-bg: rgba(255, 245, 248, 0.94);
+  --vnav-border: rgba(244, 114, 182, 0.32);
+  --vnav-item-hover: rgba(236, 72, 153, 0.12);
+  --vnav-item-active: rgba(236, 72, 153, 0.18);
+  --vnav-glow: rgba(236, 72, 153, 0.25);
+  --hero-overlay: linear-gradient(
+    135deg,
+    rgba(255, 245, 248, 0.90) 0%,
+    rgba(255, 235, 245, 0.84) 45%,
+    rgba(240, 245, 255, 0.88) 100%
+  );
+  --hero-card-bg: rgba(255, 255, 255, 0.86);
+  --hero-card-border: rgba(244, 114, 182, 0.45);
+  --hero-shadow: 0 16px 45px rgba(236, 72, 153, 0.18);
+  --hero-text-glow: 0 0 16px rgba(236, 72, 153, 0.35);
+  --hud-bg: rgba(255, 255, 255, 0.92);
+  --hud-border: rgba(244, 114, 182, 0.35);
+  --header-blur-bg: rgba(255, 245, 248, 0.88);
+  --card-bg: #ffffff;
+  --card-border: rgba(244, 114, 182, 0.22);
+  --card-shadow: 0 4px 20px -2px rgba(31, 18, 37, 0.06);
+  --card-hover-shadow: 0 12px 28px -4px rgba(236, 72, 153, 0.22);
+}
+
+html.dark {
+  --bg-primary: #0a0b16;
+  --bg-secondary: #121326;
+  --bg-elevated: #1a1c35;
+  --border-color: rgba(167, 139, 250, 0.25);
+  --border-focus: #c084fc;
+  --text-primary: #fdf4ff;
+  --text-secondary: #c4b5fd;
+  --text-muted: #84729f;
+  --accent-primary: #f472b6;
+  --accent-primary-hover: #f687b3;
+  --accent-secondary: #a78bfa;
+  --accent-cyan: #38bdf8;
+  --accent-glow: rgba(244, 114, 182, 0.45);
+  --badge-bg: rgba(167, 139, 250, 0.18);
+  --badge-text: #c084fc;
+  --vnav-bg: rgba(11, 12, 24, 0.95);
+  --vnav-border: rgba(167, 139, 250, 0.35);
+  --vnav-item-hover: rgba(167, 139, 250, 0.16);
+  --vnav-item-active: rgba(192, 132, 252, 0.22);
+  --vnav-glow: rgba(168, 85, 247, 0.32);
+  --hero-overlay: linear-gradient(
+    135deg,
+    rgba(10, 11, 22, 0.92) 0%,
+    rgba(19, 15, 38, 0.86) 50%,
+    rgba(10, 24, 44, 0.92) 100%
+  );
+  --hero-card-bg: rgba(17, 18, 36, 0.84);
+  --hero-card-border: rgba(192, 132, 252, 0.35);
+  --hero-shadow: 0 16px 48px rgba(168, 85, 247, 0.35);
+  --hero-text-glow: 0 0 20px rgba(192, 132, 252, 0.5);
+  --hud-bg: rgba(24, 25, 48, 0.9);
+  --hud-border: rgba(192, 132, 252, 0.4);
+  --header-blur-bg: rgba(10, 11, 22, 0.88);
+  --card-bg: rgba(18, 19, 38, 0.78);
+  --card-border: rgba(167, 139, 250, 0.3);
+  --card-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.6);
+  --card-hover-shadow: 0 12px 32px -4px rgba(244, 114, 182, 0.28);
+}
+
+/* --- Base & Reset --- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.65;
+  transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Prevent body scrolling when mobile drawer is open */
+body.mobile-nav-open {
+  overflow: hidden;
+}
+
+/* Accessible Skip Link */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 1rem;
+  background: var(--accent-primary);
+  color: #fff;
+  padding: 0.75rem 1.25rem;
+  font-weight: 600;
+  border-radius: 6px;
+  z-index: 9999;
+  transition: top 0.2s ease;
+  text-decoration: none;
+}
+.skip-link:focus {
+  top: 1rem;
+}
+
+/* Layout Utilities */
+.container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.section {
+  padding: 6rem 0;
+  position: relative;
+}
+
+.section-header {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto 3.5rem;
+}
+
+.section-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--accent-primary);
+  margin-bottom: 0.75rem;
+  letter-spacing: 0.06em;
+}
+
+.section-title {
+  font-family: var(--font-heading);
+  font-size: 2.25rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  margin-bottom: 0.75rem;
+}
+
+.section-subtitle {
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+/* ==========================================================================
+   VERTICAL SIDEBAR NAVIGATION (LEFT SIDE) - ANIME AESTHETIC STYLE
+   ========================================================================== */
+
+/* Mobile Backdrop Overlay */
+.nav-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 11, 22, 0.65);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 1050;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+.nav-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Vertical Navbar Container */
+.anime-vertical-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: var(--vnav-width);
+  background: var(--vnav-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-right: 1px solid var(--vnav-border);
+  box-shadow: 4px 0 30px var(--vnav-glow);
+  z-index: 1060;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), background-color var(--transition-speed) ease;
+}
+
+.vnav-inner {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 1.5rem 1rem 1.25rem;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-color) transparent;
+}
+
+/* Sidebar Brand / Crest Header */
+.vnav-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 1.5rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid var(--vnav-border);
+}
+
+.vnav-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  color: var(--text-primary);
+  transition: transform 0.2s ease;
+}
+.vnav-brand:hover {
+  transform: scale(1.03);
+}
+
+.vnav-crest-badge {
+  position: relative;
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--bg-elevated) 0%, var(--card-bg) 100%);
+  border: 1px solid var(--vnav-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+  box-shadow: 0 0 12px var(--accent-glow);
+}
+
+.crest-glow {
+  position: absolute;
+  inset: -2px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #ec4899, #a855f7);
+  opacity: 0.4;
+  z-index: -1;
+  filter: blur(4px);
+}
+
+.vnav-brand-title {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+}
+
+.vnav-brand-tag {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--accent-primary);
+  letter-spacing: 0.08em;
+}
+
+/* Mobile Close Button */
+.vnav-close-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 1.75rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+  display: none; /* Shown on mobile */
+  transition: color 0.2s ease;
+}
+.vnav-close-btn:hover {
+  color: var(--accent-primary);
+}
+
+/* Sidebar Menu List */
+.vnav-menu {
+  flex-grow: 1;
+}
+
+.vnav-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.vnav-item {
+  width: 100%;
+}
+
+.vnav-link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  text-decoration: none;
+  color: var(--text-secondary);
+  font-weight: 600;
+  font-size: 0.93rem;
+  border: 1px solid transparent;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+
+.vnav-icon {
+  font-size: 1.15rem;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.vnav-text {
+  flex-grow: 1;
+  white-space: nowrap;
+}
+
+.vnav-kanji {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 0.15rem 0.4rem;
+  border-radius: 4px;
+  background: var(--badge-bg);
+  color: var(--badge-text);
+  border: 1px solid var(--border-color);
+  opacity: 0.85;
+  transition: all 0.2s ease;
+}
+
+/* Glowing Indicator Pill for Active Section */
+.vnav-glow-pill {
+  position: absolute;
+  left: 0;
+  top: 15%;
+  bottom: 15%;
+  width: 3.5px;
+  border-radius: 0 4px 4px 0;
+  background: linear-gradient(180deg, #ec4899, #a855f7);
+  box-shadow: 0 0 10px #ec4899;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+/* Hover Interactions */
+.vnav-link:hover {
+  color: var(--text-primary);
+  background: var(--vnav-item-hover);
+  border-color: var(--vnav-border);
+  transform: translateX(5px);
+  box-shadow: 0 4px 15px var(--accent-glow);
+}
+.vnav-link:hover .vnav-icon {
+  transform: scale(1.15) rotate(5deg);
+}
+.vnav-link:hover .vnav-kanji {
+  opacity: 1;
+  color: var(--accent-primary);
+  border-color: var(--accent-primary);
+}
+
+/* Active State (ScrollSpy / Clicked) */
+.vnav-link.active {
+  color: var(--accent-primary);
+  background: var(--vnav-item-active);
+  border-color: var(--accent-primary);
+  font-weight: 700;
+  box-shadow: 0 0 18px var(--vnav-glow);
+}
+.vnav-link.active .vnav-glow-pill {
+  opacity: 1;
+}
+.vnav-link.active .vnav-kanji {
+  background: var(--accent-primary);
+  color: #ffffff;
+  border-color: transparent;
+  opacity: 1;
+  box-shadow: 0 0 8px var(--accent-glow);
+}
+
+/* Accessibility Focus Ring */
+.vnav-link:focus-visible {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 2px;
+}
+
+/* Sidebar Footer / Node Status */
+.vnav-footer {
+  padding-top: 1.25rem;
+  margin-top: 1rem;
+  border-top: 1px solid var(--vnav-border);
+}
+
+.vnav-status-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.5rem 0.75rem;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+}
+
+.vnav-status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #10b981;
+  box-shadow: 0 0 8px #10b981;
+  animation: pulseAnime 2s infinite;
+}
+
+.vnav-status-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.vnav-status-main {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: 0.03em;
+}
+
+.vnav-status-sub {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   DESKTOP DOCKED SIDEBAR LAYOUT (MIN-WIDTH: 1025PX)
+   ========================================================================== */
+@media (min-width: 1025px) {
+  /* Push page content right to seamlessly accommodate left vertical navbar */
+  body {
+    padding-left: var(--vnav-width);
+  }
+
+  .site-header {
+    width: calc(100% - var(--vnav-width));
+    left: var(--vnav-width);
+  }
+
+  .anime-vertical-nav {
+    transform: translateX(0);
+  }
+
+  .mobile-nav-toggle-btn {
+    display: none !important;
+  }
+
+  .vnav-close-btn {
+    display: none !important;
+  }
+}
+
+/* ==========================================================================
+   HEADER & NAVIGATION BAR
+   ========================================================================== */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: var(--header-blur-bg);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border-color);
+  transition: background-color var(--transition-speed) ease, border-color var(--transition-speed) ease;
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 4.75rem;
+  gap: 1rem;
+}
+
+/* Mobile Sidebar Toggle Button */
+.mobile-nav-toggle-btn {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 42px;
+  height: 42px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  cursor: pointer;
+  padding: 8px;
+  transition: all var(--transition-speed) ease;
+}
+.mobile-nav-toggle-btn:hover {
+  background: var(--border-color);
+  transform: scale(1.05);
+}
+
+.hamburger-bar {
+  width: 22px;
+  height: 2px;
+  background-color: var(--text-primary);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.brand-logo {
+  font-family: var(--font-mono);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  letter-spacing: -0.01em;
+  transition: transform 0.2s ease;
+}
+.brand-logo:hover {
+  transform: scale(1.04);
+}
+.brand-logo .logo-bracket {
+  color: var(--accent-primary);
+  text-shadow: 0 0 10px var(--accent-glow);
+}
+.brand-logo .logo-slash {
+  color: var(--accent-secondary);
+}
+
+/* Header Active Section Breadcrumb */
+.header-section-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-color);
+  padding: 0.35rem 0.85rem;
+  border-radius: 9999px;
+}
+.indicator-sparkle {
+  color: var(--accent-primary);
+}
+
+/* --- Night Mode Toggle Button (Header) --- */
+.theme-toggle-btn {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  cursor: pointer;
+  padding: 0.6rem;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-speed) ease;
+}
+.theme-toggle-btn:hover {
+  background: var(--border-color);
+  transform: rotate(20deg) scale(1.1);
+}
+.anime-btn-glow {
+  box-shadow: 0 0 12px var(--accent-glow);
+}
+
+/* Toggle icon display driven by default media query */
+.theme-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  stroke: currentColor;
+}
+.theme-icon.icon-sun { display: none; }
+.theme-icon.icon-moon { display: block; }
+
+@media (prefers-color-scheme: dark) {
+  :root:not(.light) .theme-icon.icon-sun { display: block; }
+  :root:not(.light) .theme-icon.icon-moon { display: none; }
+}
+html.dark .theme-icon.icon-sun { display: block !important; }
+html.dark .theme-icon.icon-moon { display: none !important; }
+html.light .theme-icon.icon-sun { display: none !important; }
+html.light .theme-icon.icon-moon { display: block !important; }
+
+/* ==========================================================================
+   ANIME AESTHETIC HERO SECTION
+   ========================================================================== */
+.anime-hero {
+  position: relative;
+  min-height: calc(100vh - 4.75rem);
+  display: flex;
+  align-items: center;
+  padding: 5rem 0 6rem;
+  background-image: var(--hero-overlay), url('hero-bg.jpg');
+  background-size: cover;
+  background-position: center 30%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  overflow: hidden;
+}
+
+/* Floating Sakura Petals Animation */
+.sakura-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.sakura-petal {
+  position: absolute;
+  font-size: 1.4rem;
+  user-select: none;
+  animation-name: floatSakura;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  opacity: 0.8;
+}
+
+.sakura-petal.p1 { left: 8%;  animation-duration: 9s;  animation-delay: 0s;   font-size: 1.3rem; }
+.sakura-petal.p2 { left: 24%; animation-duration: 12s; animation-delay: 2s;   font-size: 1rem; }
+.sakura-petal.p3 { left: 45%; animation-duration: 8s;  animation-delay: 1.5s; font-size: 1.5rem; }
+.sakura-petal.p4 { left: 68%; animation-duration: 11s; animation-delay: 4s;   font-size: 1.2rem; }
+.sakura-petal.p5 { left: 84%; animation-duration: 14s; animation-delay: 0.5s; font-size: 1rem; }
+.sakura-petal.p6 { left: 93%; animation-duration: 10s; animation-delay: 3s;   font-size: 1.4rem; }
+
+@keyframes floatSakura {
+  0% { transform: translateY(-40px) rotate(0deg) translateX(0); opacity: 0; }
+  15% { opacity: 0.85; }
+  85% { opacity: 0.85; }
+  100% { transform: translateY(105vh) rotate(360deg) translateX(70px); opacity: 0; }
+}
+
+.hero-container {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1.45fr 1fr;
+  align-items: center;
+  gap: 3.5rem;
+}
+
+.anime-card-glass {
+  background: var(--hero-card-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--hero-card-border);
+  border-radius: 24px;
+  padding: 3rem 2.75rem;
+  box-shadow: var(--hero-shadow);
+  position: relative;
+  overflow: hidden;
+  transition: all var(--transition-speed) ease;
+}
+
+.anime-card-glass::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #ec4899, #a855f7, #38bdf8);
+}
+
+.hero-eyebrow-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.anime-pill {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 0.35rem 0.85rem;
+  border-radius: 9999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  letter-spacing: 0.04em;
+  background: var(--badge-bg);
+  color: var(--badge-text);
+  border: 1px solid var(--border-color);
+}
+
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #10b981;
+  box-shadow: 0 0 8px #10b981;
+  animation: pulseAnime 1.8s infinite;
+}
+
+@keyframes pulseAnime {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.3); opacity: 0.6; }
+}
+
+.hero-theme-widget {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: var(--bg-elevated);
+  padding: 0.25rem 0.5rem 0.25rem 0.75rem;
+  border-radius: 9999px;
+  border: 1px solid var(--border-color);
+}
+
+.theme-auto-tag {
+  font-size: 0.75rem;
+  font-family: var(--font-mono);
+  color: var(--text-secondary);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+.magic-sparkle {
+  color: var(--accent-primary);
+  animation: sparkleTwinkle 2s infinite ease-in-out;
+}
+@keyframes sparkleTwinkle {
+  0%, 100% { transform: scale(0.9); opacity: 0.7; }
+  50% { transform: scale(1.2); opacity: 1; }
+}
+
+.anime-toggle-pill {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.3rem 0.65rem;
+  border-radius: 9999px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  transition: all 0.2s ease;
+}
+.anime-toggle-pill:hover {
+  border-color: var(--accent-primary);
+  transform: scale(1.05);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not(.light) .anime-toggle-pill .toggle-icon-night {
+    color: #c084fc; font-weight: 700; text-shadow: 0 0 8px rgba(192, 132, 252, 0.6);
+  }
+  :root:not(.light) .anime-toggle-pill .toggle-icon-day { opacity: 0.5; }
+}
+@media (prefers-color-scheme: light) {
+  :root:not(.dark) .anime-toggle-pill .toggle-icon-day {
+    color: #db2777; font-weight: 700; text-shadow: 0 0 8px rgba(219, 39, 119, 0.4);
+  }
+  :root:not(.dark) .anime-toggle-pill .toggle-icon-night { opacity: 0.5; }
+}
+html.dark .anime-toggle-pill .toggle-icon-night { color: #c084fc; font-weight: 700; text-shadow: 0 0 8px rgba(192, 132, 252, 0.6); }
+html.dark .anime-toggle-pill .toggle-icon-day { opacity: 0.5; }
+html.light .anime-toggle-pill .toggle-icon-day { color: #db2777; font-weight: 700; text-shadow: 0 0 8px rgba(219, 39, 119, 0.4); }
+html.light .anime-toggle-pill .toggle-icon-night { opacity: 0.5; }
+
+.anime-title {
+  font-family: var(--font-heading);
+  line-height: 1.15;
+  margin-bottom: 1rem;
+}
+.title-welcome {
+  display: block;
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--accent-primary);
+  letter-spacing: -0.01em;
+  margin-bottom: 0.4rem;
+}
+.anime-sparkle {
+  display: inline-block;
+  animation: sparkleTwinkle 2s infinite ease-in-out;
+}
+.title-name {
+  display: block;
+  font-size: 3.25rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--text-primary);
+}
+.gradient-text {
+  background: linear-gradient(135deg, #ec4899 0%, #a855f7 50%, #38bdf8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: inline-block;
+}
+
+.hero-role-badge {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 1.25rem;
+  font-size: 1.05rem;
+}
+.japanese-script {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--accent-primary);
+  background: var(--badge-bg);
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  letter-spacing: 0.08em;
+}
+.role-divider {
+  color: var(--text-muted);
+}
+.role-text {
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.anime-tagline {
+  color: var(--text-secondary);
+  font-size: 1.12rem;
+  line-height: 1.7;
+  margin-bottom: 2.25rem;
+  max-width: 580px;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2.25rem;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.75rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+.anime-btn-neon {
+  background: linear-gradient(135deg, #ec4899 0%, #a855f7 100%);
+  color: #ffffff;
+  box-shadow: 0 4px 18px var(--accent-glow);
+  position: relative;
+  overflow: hidden;
+}
+.anime-btn-neon:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 8px 26px var(--accent-glow);
+  filter: brightness(1.08);
+}
+.anime-btn-glass {
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  backdrop-filter: blur(8px);
+}
+.anime-btn-glass:hover {
+  background: var(--border-color);
+  transform: translateY(-3px);
+  border-color: var(--accent-primary);
+}
+.anime-btn-outline {
+  background: transparent;
+  color: var(--text-secondary);
+  border: 1px dashed var(--border-color);
+}
+.anime-btn-outline:hover {
+  color: var(--accent-primary);
+  border-color: var(--accent-primary);
+  background: var(--badge-bg);
+  transform: translateY(-3px);
+}
+
+.anime-socials {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  font-size: 0.92rem;
+}
+.social-label {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.anime-socials .social-link {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+.anime-socials .social-link:hover {
+  color: var(--accent-primary);
+}
+.anime-socials .divider {
+  color: var(--border-color);
+}
+
+/* Hero Visual & Character HUD */
+.anime-visual-wrapper {
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+.anime-character-card {
+  position: relative;
+  width: 100%;
+  max-width: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.avatar-glow-ring {
+  position: absolute;
+  top: -12px;
+  left: -12px;
+  right: -12px;
+  bottom: 80px;
+  border-radius: 32px;
+  background: linear-gradient(135deg, rgba(236, 72, 153, 0.4), rgba(168, 85, 247, 0.4), rgba(56, 189, 248, 0.4));
+  filter: blur(14px);
+  z-index: 0;
+  animation: auraPulse 4s infinite ease-in-out;
+}
+@keyframes auraPulse {
+  0%, 100% { opacity: 0.6; transform: scale(0.98); }
+  50% { opacity: 1; transform: scale(1.03); }
+}
+.avatar-container {
+  position: relative;
+  z-index: 1;
+  width: 280px;
+  height: 280px;
+  border-radius: 28px;
+  background: var(--card-bg);
+  border: 2px solid var(--hero-card-border);
+  box-shadow: var(--hero-shadow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.avatar-art {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at center, var(--bg-elevated) 0%, var(--card-bg) 80%);
+}
+.anime-avatar-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+.dev-symbol {
+  font-family: var(--font-mono);
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--accent-primary);
+  text-shadow: 0 0 16px var(--accent-glow);
+}
+.dev-aura {
+  font-size: 1.1rem;
+  animation: sparkleTwinkle 2.5s infinite ease-in-out;
+}
+
+.character-stats-hud {
+  position: relative;
+  z-index: 2;
+  margin-top: -30px;
+  width: 100%;
+  background: var(--hud-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--hud-border);
+  border-radius: 16px;
+  padding: 1.15rem;
+  box-shadow: var(--card-hover-shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+.stat-pill {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.8rem;
+  font-family: var(--font-mono);
+  font-weight: 600;
+}
+.stat-name { width: 38px; color: var(--text-secondary); }
+.stat-bar {
+  flex-grow: 1;
+  height: 8px;
+  background: var(--border-color);
+  border-radius: 9999px;
+  overflow: hidden;
+}
+.stat-fill { display: block; height: 100%; border-radius: 9999px; }
+.hp-fill {
+  width: 100%;
+  background: linear-gradient(90deg, #ec4899, #f43f5e);
+  box-shadow: 0 0 8px rgba(244, 63, 94, 0.6);
+}
+.mana-fill {
+  width: 95%;
+  background: linear-gradient(90deg, #38bdf8, #818cf8);
+  box-shadow: 0 0 8px rgba(56, 189, 248, 0.6);
+}
+.character-trait {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.25rem;
+  padding-top: 0.5rem;
+  border-top: 1px dashed var(--border-color);
+}
+.trait-tag {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--accent-primary);
+}
+
+/* ==========================================================================
+   ABOUT, SKILLS, TIMELINE, PROJECTS SECTIONS
+   ========================================================================== */
+
+/* --- About Me Section (Clean & Minimalistic Design with Anime Accents) --- */
+.about-grid-modern {
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: 2.75rem;
+  align-items: start;
+}
+
+/* Left Column: Profile Showcase Card */
+.about-profile-card {
+  padding: 2.5rem 1.75rem;
+  border-radius: 22px;
+  text-align: center;
+  position: sticky;
+  top: 6rem;
+}
+
+.profile-image-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.profile-image-frame {
+  position: relative;
+  width: 210px;
+  height: 210px;
+  border-radius: 26px;
+  overflow: hidden;
+  border: 3px solid var(--accent-primary);
+  box-shadow: 0 10px 30px var(--accent-glow);
+  margin-bottom: 1rem;
+  background: var(--card-bg);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
+}
+.profile-image-frame:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 16px 36px var(--accent-glow);
+}
+
+.profile-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 15%;
+  display: block;
+  transition: transform 0.4s ease, filter 0.3s ease;
+}
+
+.profile-status-dot-wrapper {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  width: 22px;
+  height: 22px;
+  background: var(--card-bg);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.profile-status-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #10b981;
+  box-shadow: 0 0 8px #10b981;
+  animation: pulseAnime 2s infinite;
+}
+
+/* Real Photo vs Anime Aesthetic Avatar Switcher Pill */
+.avatar-toggle-pill {
+  display: inline-flex;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-color);
+  border-radius: 9999px;
+  padding: 4px;
+  gap: 4px;
+}
+
+.avatar-switch-btn {
+  background: transparent;
+  border: none;
+  padding: 0.35rem 0.75rem;
+  border-radius: 9999px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+.avatar-switch-btn:hover {
+  color: var(--text-primary);
+}
+.avatar-switch-btn.active {
+  background: var(--card-bg);
+  color: var(--accent-primary);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+  font-weight: 700;
+}
+
+/* Profile Metadata */
+.profile-name {
+  font-family: var(--font-heading);
+  font-size: 1.65rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+  margin-bottom: 0.25rem;
+}
+
+.profile-role {
+  color: var(--accent-primary);
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 1.25rem;
+}
+
+.profile-quick-facts {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  text-align: left;
+  background: var(--bg-elevated);
+  padding: 1rem 1.15rem;
+  border-radius: 14px;
+  border: 1px solid var(--border-color);
+  margin-bottom: 1.5rem;
+}
+
+.quick-fact-item {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+.fact-icon {
+  font-size: 1rem;
+}
+
+.profile-actions {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+}
+.btn-sm {
+  padding: 0.6rem 1.2rem;
+  font-size: 0.85rem;
+  border-radius: 8px;
+}
+
+/* Right Column: Clean Bio, Highlights & Interests */
+.about-content-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.about-bio-card,
+.about-highlights-card,
+.about-interests-card {
+  padding: 2.25rem;
+  border-radius: 20px;
+}
+
+.about-card-title {
+  font-family: var(--font-heading);
+  font-size: 1.28rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 1.15rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.title-sparkle {
+  color: var(--accent-primary);
+}
+
+.about-paragraph {
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+.about-paragraph:last-child {
+  margin-bottom: 0;
+}
+.about-paragraph strong {
+  color: var(--text-primary);
+}
+
+/* Career Highlights Grid */
+.highlights-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.25rem;
+}
+
+.highlight-item {
+  display: flex;
+  gap: 0.9rem;
+  align-items: flex-start;
+  padding: 1.15rem;
+  background: var(--bg-elevated);
+  border-radius: 14px;
+  border: 1px solid var(--border-color);
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.highlight-item:hover {
+  border-color: var(--accent-primary);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px var(--accent-glow);
+}
+
+.highlight-icon-box {
+  font-size: 1.4rem;
+  padding: 0.45rem;
+  border-radius: 10px;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.highlight-heading {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.3rem;
+}
+
+.highlight-desc {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+}
+
+/* Personal Interests Chips Grid */
+.interests-intro {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  margin-bottom: 1.15rem;
+}
+
+.interests-chips-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.interest-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-color);
+  border-radius: 9999px;
+  padding: 0.55rem 1.1rem;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  transition: all 0.2s ease;
+}
+.interest-chip:hover {
+  background: var(--badge-bg);
+  color: var(--accent-primary);
+  border-color: var(--accent-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px var(--accent-glow);
+}
+.chip-icon {
+  font-size: 0.95rem;
+}
+
+@media (max-width: 950px) {
+  .about-grid-modern {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .about-profile-card {
+    position: static;
+  }
+}
+
+/* --- Skills Section --- */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+}
+.skills-category-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 14px;
+  padding: 1.75rem;
+  box-shadow: var(--card-shadow);
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+.skills-category-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent-primary);
+}
+.category-title {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 1.25rem;
+  color: var(--text-primary);
+}
+.skills-badge-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.skill-badge {
+  background-color: var(--badge-bg);
+  color: var(--badge-text);
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 0.35rem 0.75rem;
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+}
+
+/* --- Timeline Section --- */
+.timeline-wrapper {
+  max-width: 780px;
+  margin: 0 auto;
+}
+.timeline-list {
+  list-style: none;
+  position: relative;
+  padding-left: 2rem;
+  border-left: 2px solid var(--border-color);
+}
+.timeline-item {
+  position: relative;
+  margin-bottom: 2.5rem;
+}
+.timeline-item:last-child {
+  margin-bottom: 0;
+}
+.timeline-marker {
+  position: absolute;
+  left: -2.6rem;
+  top: 0.25rem;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--accent-primary);
+  border: 3px solid var(--bg-primary);
+  box-shadow: 0 0 0 2px var(--accent-primary);
+}
+.timeline-content {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: var(--card-shadow);
+}
+.timeline-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+.timeline-role {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+.timeline-company {
+  color: var(--accent-primary);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+.timeline-date {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+.timeline-summary {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+}
+.timeline-tags {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+.timeline-tags li {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  background: var(--bg-elevated);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  color: var(--text-secondary);
+}
+
+/* --- Projects Section --- */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+  gap: 2rem;
+}
+.project-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: var(--card-shadow);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+.project-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--card-hover-shadow);
+  border-color: var(--accent-primary);
+}
+.project-thumbnail-placeholder {
+  height: 180px;
+  background: linear-gradient(135deg, var(--bg-elevated) 0%, var(--border-color) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  border-bottom: 1px solid var(--border-color);
+}
+.project-info {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+.project-title {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.65rem;
+  color: var(--text-primary);
+}
+.project-description {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  margin-bottom: 1.25rem;
+  flex-grow: 1;
+}
+.project-tech-tags {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 1.25rem;
+}
+.project-tech-tags li {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  background: var(--bg-elevated);
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+  color: var(--accent-primary);
+}
+.project-links {
+  display: flex;
+  gap: 1.25rem;
+}
+.project-link {
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.project-link:hover {
+  color: var(--accent-primary);
+}
+
+/* ==========================================================================
+   TESTIMONIALS SECTION (GUILD ENDORSEMENTS)
+   ========================================================================== */
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+  gap: 2rem;
+}
+
+.testimonial-card {
+  padding: 2.25rem 2rem;
+  border-radius: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+.testimonial-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--accent-primary);
+  box-shadow: 0 14px 32px var(--accent-glow);
+}
+
+.testimonial-rating {
+  font-size: 1.05rem;
+  letter-spacing: 2px;
+  margin-bottom: 1.25rem;
+}
+
+.testimonial-quote {
+  color: var(--text-secondary);
+  font-size: 1.02rem;
+  line-height: 1.7;
+  margin-bottom: 1.75rem;
+  font-style: italic;
+  flex-grow: 1;
+}
+
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.author-avatar-badge {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--bg-elevated), var(--border-color));
+  border: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  box-shadow: 0 0 10px var(--accent-glow);
+}
+
+.author-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.author-name {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  font-style: normal;
+}
+
+.author-role {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   LIVE TERMINAL CHAT SECTION
+   ========================================================================== */
+.chat-container {
+  max-width: 820px;
+}
+
+.chat-terminal-card {
+  padding: 0;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.chat-terminal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.85rem 1.25rem;
+  background: var(--bg-elevated);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.terminal-dots {
+  display: flex;
+  gap: 6px;
+}
+.terminal-dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+}
+.terminal-dot.red { background-color: #ef4444; }
+.terminal-dot.yellow { background-color: #f59e0b; }
+.terminal-dot.green { background-color: #10b981; }
+
+.terminal-title {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.terminal-status {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #10b981;
+}
+
+.chat-messages {
+  padding: 1.75rem;
+  max-height: 280px;
+  min-height: 180px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  background: rgba(0, 0, 0, 0.05);
+}
+html.dark .chat-messages {
+  background: rgba(0, 0, 0, 0.25);
+}
+
+.chat-bubble {
+  max-width: 82%;
+  padding: 0.85rem 1.15rem;
+  border-radius: 14px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  animation: messageFade 0.3s ease;
+}
+@keyframes messageFade {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.bot-message {
+  align-self: flex-start;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  border-bottom-left-radius: 3px;
+}
+
+.user-message {
+  align-self: flex-end;
+  background: linear-gradient(135deg, #ec4899, #a855f7);
+  color: #ffffff;
+  border-bottom-right-radius: 3px;
+  box-shadow: 0 4px 14px var(--accent-glow);
+}
+
+.bubble-sender {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+  opacity: 0.85;
+}
+
+.chat-chips-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0.85rem 1.5rem;
+  background: var(--bg-primary);
+  border-top: 1px solid var(--border-color);
+}
+
+.chat-chip {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  font-weight: 600;
+  padding: 0.4rem 0.85rem;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.chat-chip:hover {
+  background: var(--badge-bg);
+  color: var(--accent-primary);
+  border-color: var(--accent-primary);
+  transform: translateY(-2px);
+}
+
+.chat-input-form {
+  display: flex;
+  gap: 0.75rem;
+  padding: 1.25rem 1.5rem 1.5rem;
+  background: var(--card-bg);
+  border-top: 1px solid var(--border-color);
+}
+
+.chat-input-field {
+  flex-grow: 1;
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.chat-input-field:focus {
+  outline: none;
+  border-color: var(--border-focus);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+.chat-send-btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: 10px;
+  font-size: 0.9rem;
+}
+
+/* ==========================================================================
+   CONTACT SECTION & FOOTER
+   ========================================================================= */
+.contact-container {
+  max-width: 800px;
+}
+.contact-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 20px;
+  padding: 2.5rem;
+  box-shadow: var(--card-shadow);
+}
+.contact-details {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+}
+.contact-details p {
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+}
+.contact-details a {
+  color: var(--accent-primary);
+  text-decoration: none;
+}
+.contact-form {
+  display: grid;
+  gap: 1.25rem;
+}
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.form-group label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--border-focus);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+/* ==========================================================================
+   TIMELINE SECTION — Anime Aesthetic Alternating Cards & Connector Line
+   ========================================================================== */
+
+/* ── Section wrapper ── */
+.timeline-section {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Decorative vertical gradient strip behind the section */
+.timeline-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 60% 50% at 50% 30%,
+    var(--accent-glow) 0%,
+    transparent 70%
+  );
+  opacity: 0.08;
+  pointer-events: none;
+}
+
+/* ── Central vertical track — the connecting line between dots ── */
+/* Uses a ::before on .tl-track so it sits perfectly centred */
+.tl-track {
+  position: relative;
+  padding: 1rem 0 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+/* The glowing vertical connector line */
+.tl-track::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 100%;
+  /* Gradient line: fades in from top, fades out at bottom */
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    var(--accent-primary) 10%,
+    var(--accent-secondary) 60%,
+    var(--accent-primary) 90%,
+    transparent 100%
+  );
+  opacity: 0.4;
+  border-radius: 999px;
+}
+
+/* ── Each timeline row — contains one dot (centred) + one card (left or right) ── */
+.tl-item {
+  display: grid;
+  /* 3-column: [card side] [dot zone] [card side] */
+  grid-template-columns: 1fr 60px 1fr;
+  align-items: start;
+  position: relative;
+}
+
+/* ── Left-side items: card in column 1, dot in column 2 ── */
+.tl-left .tl-dot  { grid-column: 2; grid-row: 1; }
+.tl-left .tl-card { grid-column: 1; grid-row: 1; margin-right: 1.5rem; }
+
+/* ── Right-side items: dot in column 2, card in column 3 ── */
+.tl-right .tl-dot  { grid-column: 2; grid-row: 1; }
+.tl-right .tl-card { grid-column: 3; grid-row: 1; margin-left: 1.5rem; }
+
+/* ── Timeline Dot — the emoji circle centred on the connector line ── */
+.tl-dot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--bg-elevated);
+  border: 2px solid var(--accent-primary);
+  box-shadow: 0 0 0 4px var(--accent-glow), 0 0 16px var(--accent-glow);
+  position: relative;
+  z-index: 2;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+}
+
+.tl-item:hover .tl-dot {
+  transform: scale(1.15);
+  box-shadow: 0 0 0 6px var(--accent-glow), 0 0 24px var(--accent-glow);
+}
+
+/* Inner emoji icon inside the dot */
+.tl-dot-inner {
+  font-size: 1.25rem;
+  line-height: 1;
+  display: block;
+}
+
+/* ── "Current" dot: extra pulsing ring to signal ongoing status ── */
+.tl-dot-current {
+  border-color: var(--accent-secondary);
+  box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.3), 0 0 20px rgba(139, 92, 246, 0.3);
+}
+
+/* Animated ripple ring for the current item's dot */
+.tl-dot-current::after {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 2px solid var(--accent-secondary);
+  opacity: 0;
+  animation: tlDotPulse 2.2s infinite ease-out;
+}
+
+@keyframes tlDotPulse {
+  0%   { inset: -6px; opacity: 0.8; }
+  100% { inset: -18px; opacity: 0; }
+}
+
+/* ── Project dot variant: cyan accent ── */
+.tl-dot-project {
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 0 4px rgba(6, 182, 212, 0.25), 0 0 16px rgba(6, 182, 212, 0.25);
+}
+
+/* ── Timeline Card ── */
+/* Base styles applied; .anime-card-glass provides background/blur/border */
+.tl-card {
+  padding: 1.5rem 1.75rem;
+  border-radius: 16px;
+  position: relative;
+  overflow: hidden;
+  cursor: default;
+  /* Smooth hover lift and glow transition */
+  transition:
+    transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.3s ease;
+}
+
+/* Lift effect on hover or keyboard focus */
+.tl-card:hover,
+.tl-card:focus-visible {
+  transform: translateY(-5px);
+  box-shadow: var(--card-hover-shadow), 0 0 20px var(--accent-glow);
+  outline: none;
+}
+
+/* "Currently Pursuing" card: subtle accent left border + warm top highlight */
+.tl-card-current {
+  border-top: 2px solid var(--accent-secondary);
+  box-shadow: var(--card-shadow), 0 0 12px rgba(139, 92, 246, 0.12);
+}
+
+/* Project card: cyan top border accent */
+.tl-card-project {
+  border-top: 2px solid var(--accent-cyan);
+  box-shadow: var(--card-shadow), 0 0 12px rgba(6, 182, 212, 0.1);
+}
+
+/* ── Card top row: category badge + year chip ── */
+.tl-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.85rem;
+  flex-wrap: wrap;
+}
+
+/* Category badge (Education / Project) */
+.tl-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.65rem;
+  border-radius: 999px;
+  border: 1px solid;
+}
+
+/* Education badge: sakura pink */
+.tl-badge-edu {
+  color: var(--accent-primary);
+  background: var(--badge-bg);
+  border-color: rgba(236, 72, 153, 0.3);
+}
+
+/* Project badge: cyan */
+.tl-badge-project {
+  color: var(--accent-cyan);
+  background: rgba(6, 182, 212, 0.1);
+  border-color: rgba(6, 182, 212, 0.3);
+}
+
+/* Year chip */
+.tl-year {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+}
+
+/* "Present" year chip for current item — shows live dot */
+.tl-year-current {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--accent-secondary);
+  font-weight: 700;
+}
+
+/* Animated live dot inside the "Present" year chip */
+.tl-pulse-dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent-secondary);
+  animation: tlPulseDot 1.5s infinite ease-in-out;
+}
+
+@keyframes tlPulseDot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.5; transform: scale(0.75); }
+}
+
+/* ── Card title (event/degree name) ── */
+.tl-title {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.3;
+  margin-bottom: 0.4rem;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+/* "Currently Pursuing" inline tag appended to the title */
+.tl-current-tag {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--accent-secondary);
+  background: rgba(139, 92, 246, 0.12);
+  border: 1px solid rgba(139, 92, 246, 0.3);
+  padding: 0.1rem 0.55rem;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+/* ── Institution / place name ── */
+.tl-place {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 0.75rem;
+  font-style: italic;
+}
+
+.tl-place-icon {
+  font-size: 0.9rem;
+  font-style: normal;
+}
+
+/* ── Description paragraph ── */
+.tl-desc {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  margin-bottom: 1rem;
+}
+
+/* ── Tag chip row ── */
+.tl-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+/* Base tag chip — inherits from mastery-tag concept */
+.tl-tag {
+  font-family: var(--font-mono);
+  font-size: 0.67rem;
+  font-weight: 600;
+  color: var(--badge-text);
+  background: var(--badge-bg);
+  border: 1px solid var(--border-color);
+  padding: 0.15rem 0.6rem;
+  border-radius: 999px;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.tl-card:hover .tl-tag {
+  background: var(--accent-glow);
+  color: var(--accent-primary);
+  border-color: var(--accent-primary);
+}
+
+/* Tech tag variant (for project cards): slightly different initial colour */
+.tl-tag-tech {
+  color: var(--accent-cyan);
+  background: rgba(6, 182, 212, 0.08);
+  border-color: rgba(6, 182, 212, 0.25);
+}
+
+.tl-card:hover .tl-tag-tech {
+  background: rgba(6, 182, 212, 0.2);
+  color: var(--accent-cyan);
+  border-color: var(--accent-cyan);
+}
+
+/* ── Card glow overlay (blooms on hover) ── */
+.tl-card-glow {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    circle at 50% 0%,
+    var(--accent-glow) 0%,
+    transparent 65%
+  );
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+}
+
+.tl-card:hover .tl-card-glow {
+  opacity: 1;
+}
+
+/* ── Responsive: Tablet — collapse to single column ── */
+@media (max-width: 860px) {
+  /* Hide the central vertical line and switch to single column */
+  .tl-track::before {
+    left: 28px;
+    transform: none;
+  }
+
+  .tl-item {
+    /* Single column: [dot] [card] */
+    grid-template-columns: 60px 1fr;
+    grid-template-rows: auto;
+  }
+
+  /* Both left and right items: dot in column 1, card in column 2 */
+  .tl-left .tl-dot,
+  .tl-right .tl-dot {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .tl-left .tl-card,
+  .tl-right .tl-card {
+    grid-column: 2;
+    grid-row: 1;
+    margin-left: 1rem;
+    margin-right: 0;
+  }
+}
+
+/* ── Responsive: Mobile ── */
+@media (max-width: 500px) {
+  .tl-track {
+    gap: 2rem;
+  }
+  .tl-card {
+    padding: 1.25rem;
+  }
+  .tl-title {
+    font-size: 0.95rem;
+  }
+}
+
+/* ==========================================================================
+   END TIMELINE SECTION CSS
+   ========================================================================== */
+
+/* ==========================================================================
+   SKILLS SECTION — Anime Aesthetic XP Progress Bars &amp; Mastery Cards
+   ========================================================================== */
+
+/* ── Section Background Tint ── */
+.skills-section {
+  background: linear-gradient(
+    180deg,
+    var(--bg-primary) 0%,
+    var(--bg-elevated) 50%,
+    var(--bg-primary) 100%
+  );
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle floating anime sparkle pattern behind skills section */
+.skills-section::before {
+  content: "✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦";
+  position: absolute;
+  top: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.75rem;
+  letter-spacing: 1.5rem;
+  color: var(--accent-primary);
+  opacity: 0.12;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+/* ── Block heading for the primary language bar group ── */
+.skills-primary-block {
+  margin-bottom: 4rem;
+}
+
+.skills-block-label {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  letter-spacing: 0.03em;
+  margin-bottom: 1.75rem;
+  text-transform: uppercase;
+}
+
+/* Kanji subtitle next to the block heading */
+.block-label-kana {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--accent-primary);
+  opacity: 0.75;
+  font-weight: 400;
+}
+
+.block-label-icon {
+  font-size: 1.2rem;
+}
+
+/* ── Skills Bars Grid: stacked column of 3 bar cards ── */
+.skills-bars-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* ── Individual Skill Bar Card (glassmorphism base via .anime-card-glass) ── */
+.skill-bar-card {
+  padding: 1.5rem 1.75rem;
+  border-radius: 14px;
+  /* The card has a subtle left accent border to indicate the skill's color */
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* Java card: orange/amber left accent */
+.skill-bar-card[data-skill="java"] {
+  border-left: 3px solid #f59e0b;
+}
+
+/* C card: cyan/electric left accent */
+.skill-bar-card[data-skill="c"] {
+  border-left: 3px solid #06b6d4;
+}
+
+/* Python card: green/emerald left accent */
+.skill-bar-card[data-skill="python"] {
+  border-left: 3px solid #10b981;
+}
+
+.skill-bar-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--card-hover-shadow);
+}
+
+/* ── Skill bar top row: identity (icon + name) + level badge ── */
+.skill-bar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.skill-identity {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* Circular icon badge per language */
+.skill-icon-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--badge-bg);
+  border: 1.5px solid var(--border-color);
+  font-size: 1.4rem;
+  flex-shrink: 0;
+  /* Subtle pulse on hover via parent card hover */
+  transition: transform 0.25s ease;
+}
+
+.skill-bar-card:hover .skill-icon-badge {
+  transform: rotate(-8deg) scale(1.1);
+}
+
+.skill-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+/* Language name (e.g. "Java", "Python") */
+.skill-name {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+
+/* Japanese transliteration subtitle below the name */
+.skill-kanji {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--accent-primary);
+  letter-spacing: 0.05em;
+  opacity: 0.8;
+}
+
+/* ── Level badge: right side of skill header ── */
+.skill-level-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.1rem;
+}
+
+/* "Lv. 80" text */
+.level-tag {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--accent-secondary);
+  background: var(--badge-bg);
+  padding: 0.2rem 0.6rem;
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+  line-height: 1.4;
+}
+
+/* "Advanced / Expert / Proficient" class label */
+.level-class {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* ── XP Progress Bar Track (grey background bar) ── */
+.skill-xp-track {
+  width: 100%;
+  height: 10px;
+  background: var(--border-color);
+  border-radius: 999px;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 0.75rem;
+}
+
+/* ── XP Fill Bar — starts at 0, animated to data-progress width via JS ── */
+.skill-xp-fill {
+  height: 100%;
+  width: 0%; /* JS Intersection Observer sets this to data-progress% */
+  border-radius: 999px;
+  position: relative;
+  transition: width 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Java fill: warm amber → orange gradient */
+.java-fill {
+  background: linear-gradient(90deg, #fbbf24 0%, #f59e0b 60%, #d97706 100%);
+  box-shadow: 0 0 10px rgba(245, 158, 11, 0.5);
+}
+
+/* C fill: electric cyan → indigo gradient */
+.c-fill {
+  background: linear-gradient(90deg, #38bdf8 0%, #06b6d4 60%, #0891b2 100%);
+  box-shadow: 0 0 10px rgba(6, 182, 212, 0.5);
+}
+
+/* Python fill: emerald → teal gradient */
+.python-fill {
+  background: linear-gradient(90deg, #34d399 0%, #10b981 60%, #059669 100%);
+  box-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
+}
+
+/* ── Moving shimmer effect overlaid on the fill bar ── */
+.xp-shimmer {
+  position: absolute;
+  top: 0;
+  left: -60%;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.45), transparent);
+  animation: xpShimmer 2.2s infinite ease-in-out;
+  border-radius: 999px;
+}
+
+@keyframes xpShimmer {
+  0%   { left: -60%; opacity: 0; }
+  30%  { opacity: 1; }
+  100% { left: 120%; opacity: 0; }
+}
+
+/* ── Footer row: sub-skill tags + XP number label ── */
+.skill-bar-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+/* Sub-skill highlight text (e.g. "OOP · Spring · Android") */
+.skill-highlight {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  letter-spacing: 0.03em;
+}
+
+/* "80 / 100 XP" label on the right */
+.skill-xp-label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--accent-primary);
+  white-space: nowrap;
+}
+
+/* ── Mastery Cards Grid: 3-column RPG stat cards ── */
+.skills-mastery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+/* ── Individual mastery card ── */
+.skill-mastery-card {
+  padding: 1.5rem;
+  border-radius: 14px;
+  position: relative;
+  overflow: hidden;
+  cursor: default;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+/* Lift + intensified glow on hover or keyboard focus */
+.skill-mastery-card:hover,
+.skill-mastery-card:focus-visible {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: var(--card-hover-shadow), 0 0 24px var(--accent-glow);
+  outline: none;
+}
+
+/* Icon displayed large at top of each mastery card */
+.mastery-card-icon {
+  font-size: 2rem;
+  line-height: 1;
+  /* Subtle bounce animation on card hover */
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.skill-mastery-card:hover .mastery-card-icon {
+  transform: scale(1.2) rotate(-5deg);
+}
+
+.mastery-card-title {
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.3;
+}
+
+.mastery-card-desc {
+  font-size: 0.83rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+  flex-grow: 1;
+}
+
+/* Tag chip row at bottom of mastery card */
+.mastery-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: auto;
+}
+
+/* Individual tag chip — anime badge style */
+.mastery-tag {
+  font-family: var(--font-mono);
+  font-size: 0.67rem;
+  font-weight: 600;
+  color: var(--badge-text);
+  background: var(--badge-bg);
+  border: 1px solid var(--border-color);
+  padding: 0.15rem 0.55rem;
+  border-radius: 999px;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.skill-mastery-card:hover .mastery-tag {
+  background: var(--accent-glow);
+  color: var(--accent-primary);
+}
+
+/* ── Hidden radial glow overlay that blooms on card hover ── */
+.card-hover-glow {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    circle at 50% 0%,
+    var(--accent-glow) 0%,
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+}
+
+.skill-mastery-card:hover .card-hover-glow {
+  opacity: 1;
+}
+
+/* ── Responsive adjustments for mastery grid ── */
+@media (max-width: 900px) {
+  .skills-mastery-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .skills-mastery-grid {
+    grid-template-columns: 1fr;
+  }
+  .skill-bar-card {
+    padding: 1.25rem 1.25rem;
+  }
+  .skills-block-label {
+    flex-wrap: wrap;
+    font-size: 0.9rem;
+  }
+}
+
+/* ==========================================================================
+   END SKILLS SECTION CSS
+   ========================================================================== */
+
+.site-footer {
+  border-top: 1px solid var(--border-color);
+  padding: 2.5rem 0;
+  background-color: var(--bg-secondary);
+  transition: background-color var(--transition-speed) ease;
+}
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.footer-meta p {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+.footer-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+.footer-links a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.2s ease;
+}
+.footer-links a:hover {
+  color: var(--accent-primary);
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN (<= 1024PX TABLETS & MOBILE)
+   ========================================================================== */
+@media (max-width: 1024px) {
+  body {
+    padding-left: 0;
+  }
+
+  .site-header {
+    width: 100%;
+    left: 0;
+  }
+
+  .anime-vertical-nav {
+    transform: translateX(-100%);
+    width: 280px;
+  }
+
+  .anime-vertical-nav.open {
+    transform: translateX(0);
+  }
+
+  .mobile-nav-toggle-btn {
+    display: inline-flex;
+  }
+
+  .vnav-close-btn {
+    display: block;
+  }
+
+  .header-section-indicator {
+    display: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .hero-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 2.5rem;
+  }
+  .hero-eyebrow-wrapper {
+    justify-content: center;
+  }
+  .hero-role-badge {
+    justify-content: center;
+  }
+  .anime-tagline {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .hero-actions, .anime-socials {
+    justify-content: center;
+  }
+  .anime-visual-wrapper {
+    margin-top: 1rem;
+  }
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .anime-card-glass {
+    padding: 2rem 1.5rem;
+  }
+  .title-name {
+    font-size: 2.5rem;
+  }
+  .title-welcome {
+    font-size: 1.15rem;
+  }
+  .avatar-container {
+    width: 220px;
+    height: 220px;
+  }
+  .chat-bubble {
+    max-width: 92%;
+  }
+}
+
+/* ==========================================================================
+   PROJECTS SECTION — Thumbnail Grid, Hover Effects & Modal Detail System
+   ========================================================================== */
+
+/* ── Section ── */
+.projects-section {
+  position: relative;
+}
+
+/* ── 3-column card grid ── */
+.proj-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+/* ── Individual project card (base + .anime-card-glass for bg/blur) ── */
+.proj-card {
+  border-radius: 16px;
+  overflow: hidden;
+  padding: 0;                /* No padding — thumbnail bleeds to card edges */
+  position: relative;
+  cursor: pointer;
+  /* Consistent margin and lift transition */
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.3s ease;
+}
+
+/* Lift + deepen shadow on hover */
+.proj-card:hover,
+.proj-card:focus-visible {
+  transform: translateY(-6px);
+  box-shadow: var(--card-hover-shadow), 0 0 28px var(--accent-glow);
+  outline: none;
+}
+
+/* ── Thumbnail wrapper — clips image and hosts overlay ── */
+.proj-thumb-wrapper {
+  position: relative;
+  width: 100%;
+  /* Consistent 16:9 aspect ratio for all thumbnails */
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: var(--bg-elevated);
+}
+
+/* ── Thumbnail image — zooms subtly on card hover ── */
+.proj-thumb-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  /* Image zooms slightly on hover for depth effect */
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), filter 0.3s ease;
+}
+
+.proj-card:hover .proj-thumb-img {
+  transform: scale(1.05);
+  filter: brightness(0.75);
+}
+
+/* ── Overlay button — hidden until thumbnail is hovered ── */
+/* This button is the PRIMARY click target that opens the modal */
+.proj-thumb-btn {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #fff;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  /* Hidden by default — fades in on hover */
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  letter-spacing: 0.04em;
+  text-shadow: 0 1px 8px rgba(0,0,0,0.6);
+}
+
+.proj-card:hover .proj-thumb-btn {
+  opacity: 1;
+}
+
+.proj-thumb-btn-icon {
+  font-size: 1.5rem;
+}
+
+/* ── Status badge pinned top-left of thumbnail ── */
+.proj-status-badge {
+  position: absolute;
+  top: 0.6rem;
+  left: 0.6rem;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  padding: 0.2rem 0.65rem;
+  border-radius: 999px;
+  pointer-events: none;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+/* Badge colour variants */
+.proj-status-featured { background: rgba(236,72,153,0.85); color: #fff; }
+.proj-status-oop      { background: rgba(245,158,11,0.85); color: #fff; }
+.proj-status-python   { background: rgba(16,185,129,0.85); color: #fff; }
+
+/* ── Card body — padded content below the thumbnail ── */
+.proj-card-body {
+  padding: 1.2rem 1.4rem 1.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+/* ── Meta row: category tag + year ── */
+.proj-card-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.proj-category-tag {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--accent-primary);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.proj-year {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+/* ── Project title ── */
+.proj-title {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.3;
+}
+
+/* ── One-liner excerpt description ── */
+.proj-excerpt {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* ── Tech tag chips row ── */
+.proj-tech-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+/* Individual tech tag — small pill */
+.proj-tech {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: var(--badge-text);
+  background: var(--badge-bg);
+  border: 1px solid var(--border-color);
+  padding: 0.12rem 0.55rem;
+  border-radius: 999px;
+  white-space: nowrap;
+  letter-spacing: 0.04em;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.proj-card:hover .proj-tech {
+  background: var(--accent-glow);
+  color: var(--accent-primary);
+}
+
+/* ── Card footer: "Details →" button + GitHub link ── */
+.proj-card-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 0.25rem;
+  flex-wrap: wrap;
+}
+
+/* "Details →" — primary action, opens the modal */
+.proj-detail-btn {
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--accent-primary);
+  background: var(--badge-bg);
+  border: 1px solid var(--border-color);
+  padding: 0.35rem 0.9rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  letter-spacing: 0.03em;
+}
+
+.proj-detail-btn:hover {
+  background: var(--accent-glow);
+  color: var(--accent-primary);
+  border-color: var(--accent-primary);
+}
+
+/* GitHub link — text-style icon link */
+.proj-gh-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.proj-gh-link:hover {
+  color: var(--accent-primary);
+}
+
+/* ── Card glow overlay (fades in on hover) ── */
+.proj-card-glow {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(circle at 50% 100%, var(--accent-glow) 0%, transparent 65%);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+}
+
+.proj-card:hover .proj-card-glow {
+  opacity: 1;
+}
+
+/* ==========================================================================
+   PROJECT MODAL SYSTEM
+   .proj-modal is fixed full-screen, hidden by default (aria-hidden=true).
+   Adding class .open makes it visible via opacity + pointer-events transition.
+   JS toggles .open and aria-hidden on the matching modal when any
+   [data-open-modal] element is clicked.
+   ========================================================================== */
+
+/* ── Modal root — fixed full-screen overlay ── */
+.proj-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  /* Hidden by default */
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+/* Visible state — toggled by JS adding class .open */
+.proj-modal.open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* ── Semi-transparent blurred backdrop ── */
+.proj-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(5, 5, 15, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  cursor: pointer; /* Clicking backdrop also closes modal */
+}
+
+/* ── Modal content panel ── */
+/* Slides up from slightly below on open */
+.proj-modal-panel {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 680px;
+  max-height: 90vh;
+  overflow-y: auto;
+  border-radius: 20px;
+  padding: 0;
+  /* Slide-up entrance animation */
+  transform: translateY(24px);
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent-primary) transparent;
+}
+
+.proj-modal.open .proj-modal-panel {
+  transform: translateY(0);
+}
+
+/* ── ✕ Close button — top-right corner of modal panel ── */
+.proj-modal-close {
+  position: absolute;
+  top: 0.85rem;
+  right: 0.85rem;
+  z-index: 2;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--border-color);
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.proj-modal-close:hover {
+  background: var(--accent-glow);
+  border-color: var(--accent-primary);
+  transform: rotate(90deg);
+}
+
+/* ── Hero thumbnail at top of modal ── */
+.proj-modal-thumb {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: 20px 20px 0 0;
+}
+
+.proj-modal-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ── Modal text content area ── */
+.proj-modal-content {
+  padding: 1.5rem 1.75rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.proj-modal-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.proj-modal-title {
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1.25;
+}
+
+.proj-modal-place {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  font-style: italic;
+  font-weight: 600;
+}
+
+.proj-modal-desc {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+.proj-modal-desc code {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--accent-primary);
+  background: var(--badge-bg);
+  padding: 0.1rem 0.35rem;
+  border-radius: 4px;
+}
+
+.proj-modal-section-title {
+  font-family: var(--font-heading);
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-top: 0.25rem;
+}
+
+.proj-modal-features {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  padding: 0;
+}
+
+.proj-modal-features li {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.3rem;
+}
+
+.proj-modal-actions {
+  margin-top: 0.5rem;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* ── Body scroll lock when modal is open ── */
+body.modal-open {
+  overflow: hidden;
+}
+
+/* ── Responsive: tablet ── */
+@media (max-width: 900px) {
+  .proj-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ── Responsive: mobile ── */
+@media (max-width: 580px) {
+  .proj-grid {
+    grid-template-columns: 1fr;
+  }
+  .proj-modal-panel {
+    max-height: 95vh;
+    border-radius: 16px;
+  }
+  .proj-modal-content {
+    padding: 1.25rem;
+  }
+  .proj-modal-title {
+    font-size: 1.1rem;
+  }
+}
+
+/* ==========================================================================
+   END PROJECTS SECTION CSS
+   ========================================================================== */
+
+/* ==========================================================================
+   VIDEO SHOWCASE SECTION — Responsive YouTube Embed & Pixel-Art Frame
+   ========================================================================== */
+
+/* ── Section background: subtle gradient tint ── */
+.video-section {
+  position: relative;
+}
+
+.video-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 70% 55% at 50% 60%,
+    var(--accent-glow) 0%,
+    transparent 70%
+  );
+  opacity: 0.07;
+  pointer-events: none;
+}
+
+/* ── Outer frame container: pixel-art corner brackets + neon border ── */
+.video-frame-outer {
+  position: relative;
+  max-width: 820px;
+  margin: 0 auto 2rem;
+  border-radius: 12px;
+  /* Neon glowing border around the entire video frame */
+  border: 2px solid var(--accent-primary);
+  box-shadow:
+    0 0 0 1px var(--border-color),
+    0 0 16px var(--accent-glow),
+    0 0 40px rgba(236, 72, 153, 0.12);
+  overflow: hidden; /* clips the iframe inside the border-radius */
+  background: #000;
+}
+
+/* ── Pixel-art corner brackets — 4 absolute positioned spans ── */
+/* Each corner is an L-shaped bracket made from border on two sides */
+.vid-corner {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  z-index: 4;
+  pointer-events: none;
+}
+
+/* Top-left: border-top + border-left */
+.vid-corner-tl {
+  top: -2px;
+  left: -2px;
+  border-top: 3px solid var(--accent-secondary);
+  border-left: 3px solid var(--accent-secondary);
+  border-radius: 2px 0 0 0;
+}
+
+/* Top-right: border-top + border-right */
+.vid-corner-tr {
+  top: -2px;
+  right: -2px;
+  border-top: 3px solid var(--accent-secondary);
+  border-right: 3px solid var(--accent-secondary);
+  border-radius: 0 2px 0 0;
+}
+
+/* Bottom-left: border-bottom + border-left */
+.vid-corner-bl {
+  bottom: -2px;
+  left: -2px;
+  border-bottom: 3px solid var(--accent-secondary);
+  border-left: 3px solid var(--accent-secondary);
+  border-radius: 0 0 0 2px;
+}
+
+/* Bottom-right: border-bottom + border-right */
+.vid-corner-br {
+  bottom: -2px;
+  right: -2px;
+  border-bottom: 3px solid var(--accent-secondary);
+  border-right: 3px solid var(--accent-secondary);
+  border-radius: 0 0 2px 0;
+}
+
+/* ── CRT / pixel-art scanline overlay ── */
+/* Repeating horizontal lines create a retro screen effect */
+.vid-scanlines {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  /* Alternating transparent / semi-dark horizontal stripes every 4px */
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 3px,
+    rgba(0, 0, 0, 0.06) 3px,
+    rgba(0, 0, 0, 0.06) 4px
+  );
+  border-radius: inherit;
+  /* Scanlines are very subtle — just enough for the pixel-art aesthetic */
+  opacity: 0.55;
+  animation: scanlineShift 8s linear infinite;
+}
+
+/* Very slow vertical drift of the scanline pattern for a CRT "living" feel */
+@keyframes scanlineShift {
+  from { background-position: 0 0; }
+  to   { background-position: 0 80px; }
+}
+
+/* ── RESPONSIVE EMBED WRAPPER ──────────────────────────────────────────────
+   KEY TECHNIQUE: aspect-ratio: 16 / 9
+   This is the modern, clean replacement for the old "padding-top: 56.25%" hack.
+   The wrapper naturally becomes the correct height for any width it is given,
+   so the video is always perfectly proportioned without any fixed px height.
+   The iframe is then set to 100% width AND height to fill this container.
+   ─────────────────────────────────────────────────────────────────────────── */
+.vid-responsive-wrapper {
+  position: relative;
+  width: 100%;
+  /* aspect-ratio keeps the container at 16:9 at any responsive width */
+  aspect-ratio: 16 / 9;
+  display: block;
+  overflow: hidden;
+}
+
+/* ── The YouTube iframe — fills 100% of the wrapper ── */
+.vid-iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+  /* No border/radius needed — clipped by .video-frame-outer overflow:hidden */
+}
+
+/* ── Video Caption Card (glassmorphism, matches section aesthetic) ── */
+.video-caption-card {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 1.4rem 1.75rem;
+  border-radius: 14px;
+  /* Remove default figure margin */
+  margin-block-start: 0;
+  margin-block-end: 0;
+  margin-inline-start: auto;
+  margin-inline-end: auto;
+}
+
+.vid-caption-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+/* ── Caption header row: camera emoji + "What's in this video?" label ── */
+.vid-caption-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.vid-caption-icon {
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+.vid-caption-label {
+  font-family: var(--font-heading);
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: 0.02em;
+}
+
+/* ── Caption description text ── */
+.vid-caption-text {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  max-width: 680px;
+}
+
+.vid-caption-text strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+/* ── Meta chips row below caption text ── */
+.vid-caption-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.15rem;
+}
+
+/* Individual meta chip — same style as project tech tags */
+.vid-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--badge-text);
+  background: var(--badge-bg);
+  border: 1px solid var(--border-color);
+  padding: 0.2rem 0.65rem;
+  border-radius: 999px;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.vid-chip:hover {
+  background: var(--accent-glow);
+  color: var(--accent-primary);
+  border-color: var(--accent-primary);
+}
+
+/* ── Responsive: mobile ── */
+@media (max-width: 600px) {
+  .video-caption-card {
+    padding: 1.15rem 1.25rem;
+  }
+  .vid-caption-chips {
+    gap: 0.35rem;
+  }
+}
+
+/* ==========================================================================
+   END VIDEO SHOWCASE SECTION CSS
+   ========================================================================== */
+
+/* ==========================================================================
+   TESTIMONIALS SECTION
+   ========================================================================== */
+
+/* ── Section Background ── */
+.testimonials-section {
+  position: relative;
+  background: linear-gradient(
+    180deg,
+    var(--bg-primary) 0%,
+    var(--bg-elevated) 50%,
+    var(--bg-primary) 100%
+  );
+  overflow: hidden;
+}
+
+/* Subtle decorative particles in background */
+.testimonials-section::before {
+  content: "✨ ✨ ✨ ✨";
+  position: absolute;
+  top: 3rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.85rem;
+  letter-spacing: 4rem;
+  color: var(--accent-secondary);
+  opacity: 0.15;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+/* ── 3-column Responsive Grid ── */
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+/* ── Individual Testimonial Card ── */
+/* Extends .anime-card-glass for the frosted background and border */
+.testimonial-card {
+  display: flex;
+  flex-direction: column;
+  padding: 1.75rem;
+  border-radius: 16px;
+  position: relative;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.3s ease;
+}
+
+/* Lift and glow on hover */
+.testimonial-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--card-hover-shadow), 0 0 20px rgba(139, 92, 246, 0.15);
+}
+
+/* Subtle accent line on top */
+.testimonial-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 1.75rem;
+  right: 1.75rem;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent-secondary), transparent);
+  opacity: 0.5;
+}
+
+/* ── Star Rating ── */
+.testimonial-rating {
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+  letter-spacing: 0.1em;
+  opacity: 0.9;
+}
+
+/* ── Quote Text ── */
+.testimonial-quote {
+  font-size: 0.92rem;
+  color: var(--text-primary);
+  line-height: 1.65;
+  font-style: italic;
+  flex-grow: 1; /* Pushes author to bottom */
+  position: relative;
+  z-index: 1;
+}
+
+/* Large decorative quote mark behind text */
+.testimonial-quote::before {
+  content: "“";
+  position: absolute;
+  top: -1.5rem;
+  left: -0.75rem;
+  font-family: serif;
+  font-size: 4rem;
+  color: var(--accent-secondary);
+  opacity: 0.1;
+  z-index: -1;
+  line-height: 1;
+}
+
+/* ── Author Footer ── */
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-color);
+}
+
+/* Avatar Placeholder (Emoji Badge) */
+.author-avatar-badge {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--badge-bg);
+  border: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  flex-shrink: 0;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Author Name & Role */
+.author-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.author-name {
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  font-style: normal; /* Override <cite> default italic */
+}
+
+.author-role {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--accent-secondary);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+/* ── Responsive adjustments ── */
+@media (max-width: 950px) {
+  .testimonials-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 650px) {
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+  }
+  .testimonial-card {
+    padding: 1.5rem;
+  }
+}
+
+/* ==========================================================================
+   END TESTIMONIALS SECTION CSS
+   ========================================================================== */
+
+/* ==========================================================================
+   CHAT SECTION — Live Holographic Terminal
+   ========================================================================== */
+
+.chat-section {
+  position: relative;
+}
+
+/* Chat container max-width to look like a terminal window */
+.chat-container {
+  max-width: 780px;
+}
+
+/* ── Terminal Card (Holo-Glass) ── */
+.chat-terminal-card {
+  display: flex;
+  flex-direction: column;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 0 0 1px var(--border-color), 0 0 32px var(--accent-glow);
+  margin-top: 1.5rem;
+}
+
+/* ── Terminal Header (macOS style dots + title) ── */
+.chat-terminal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.85rem 1.25rem;
+  background: rgba(0, 0, 0, 0.4);
+  border-bottom: 1px solid var(--border-color);
+  backdrop-filter: blur(10px);
+}
+
+.terminal-dots {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.terminal-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+.terminal-dot.red { background: #ef4444; }
+.terminal-dot.yellow { background: #eab308; }
+.terminal-dot.green { background: #22c55e; }
+
+.terminal-title {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.terminal-status {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--accent-cyan);
+  letter-spacing: 0.05em;
+}
+
+/* ── Chat Messages Log Area ── */
+.chat-messages {
+  flex-grow: 1;
+  min-height: 280px;
+  max-height: 400px;
+  overflow-y: auto;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  background: rgba(10, 10, 16, 0.6); /* Slightly darker than glass background */
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent-primary) transparent;
+}
+
+/* Hide scrollbar visually but keep functionality for webkit */
+.chat-messages::-webkit-scrollbar {
+  width: 6px;
+}
+.chat-messages::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 999px;
+}
+
+/* ── Chat Bubbles ── */
+.chat-bubble {
+  max-width: 80%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  animation: bubbleFadeIn 0.3s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes bubbleFadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.bubble-sender {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+}
+
+.bubble-text {
+  padding: 0.85rem 1.15rem;
+  border-radius: 16px;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--text-primary);
+}
+
+/* Bot Message Styling */
+.bot-message {
+  align-self: flex-start;
+}
+.bot-message .bubble-text {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-color);
+  border-top-left-radius: 4px; /* Classic chat bubble tail effect */
+}
+.bot-message .bubble-sender {
+  color: var(--accent-primary);
+}
+
+/* User Message Styling */
+.user-message {
+  align-self: flex-end;
+}
+.user-message .bubble-sender {
+  align-self: flex-end;
+}
+.user-message .bubble-text {
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+  color: #fff;
+  border-top-right-radius: 4px;
+}
+
+/* ── Quick Suggestion Chips ── */
+.chat-chips-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-top: 1px solid var(--border-color);
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.chat-chip {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--badge-text);
+  background: var(--badge-bg);
+  border: 1px solid var(--border-color);
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.chat-chip:hover {
+  background: var(--accent-glow);
+  color: var(--accent-primary);
+  border-color: var(--accent-primary);
+}
+
+/* ── Chat Input Form ── */
+.chat-input-form {
+  display: flex;
+  padding: 1rem 1.5rem;
+  gap: 0.75rem;
+  background: rgba(0, 0, 0, 0.4);
+  border-top: 1px solid var(--border-color);
+}
+
+.chat-input-field {
+  flex-grow: 1;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.chat-input-field:focus {
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 2px var(--accent-glow);
+}
+
+.chat-input-field::placeholder {
+  color: var(--text-muted);
+}
+
+.chat-send-btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .chat-terminal-header {
+    padding: 0.65rem 1rem;
+  }
+  .terminal-title {
+    font-size: 0.65rem;
+  }
+  .chat-messages {
+    padding: 1.25rem 1rem;
+  }
+  .chat-chips-row {
+    padding: 0.75rem 1rem;
+  }
+  .chat-input-form {
+    padding: 0.85rem 1rem;
+  }
+}
+
+/* ==========================================================================
+   END CHAT SECTION CSS
+   ========================================================================== */
+
+/* ==========================================================================
+   CONTACT SECTION
+   ========================================================================== */
+
+.contact-section {
+  position: relative;
+  padding-bottom: 6rem;
+}
+
+/* ── Split Layout Card ── */
+.contact-card {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 2rem;
+  padding: 2.5rem;
+  border-radius: 24px;
+  box-shadow: 0 0 0 1px var(--border-color), 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* ── Left Side: Contact Info ── */
+.contact-info-side {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding-right: 1.5rem;
+  border-right: 1px solid var(--border-color);
+}
+
+.contact-side-title {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.contact-side-desc {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.contact-details-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-top: 0.5rem;
+}
+
+.contact-details-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.contact-icon {
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.contact-detail-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.contact-detail-text strong {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--accent-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.contact-detail-text span,
+.contact-link {
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.contact-link:hover {
+  color: var(--accent-secondary);
+  text-decoration: underline;
+}
+
+/* ── Right Side: Form ── */
+.contact-form-side {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* Two columns for Name / Email on desktop */
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  letter-spacing: 0.03em;
+}
+
+.form-control {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 0.85rem 1rem;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.form-control:focus {
+  background: rgba(0, 0, 0, 0.4);
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 3px rgba(236, 72, 153, 0.15);
+}
+
+.form-control::placeholder {
+  color: var(--text-muted);
+}
+
+/* Make textarea resizable only vertically */
+textarea.form-control {
+  resize: vertical;
+  min-height: 120px;
+}
+
+/* Submit Button visibility enhancement */
+.contact-submit-btn {
+  margin-top: 0.5rem;
+  align-self: flex-start;
+  padding: 0.85rem 2rem;
+  font-size: 0.95rem;
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+  border: none;
+  box-shadow: 0 4px 15px rgba(236, 72, 153, 0.3);
+}
+
+.contact-submit-btn:hover {
+  box-shadow: 0 6px 20px rgba(236, 72, 153, 0.5);
+  transform: translateY(-2px);
+}
+
+/* ── Success Message Banner ── */
+.contact-success-banner {
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.4);
+  border-radius: 8px;
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  color: #a7f3d0; /* Soft green */
+  animation: fadeInDown 0.4s ease forwards;
+}
+
+.contact-success-banner strong {
+  display: block;
+  font-size: 1.05rem;
+  color: #34d399; /* Bright green */
+  margin-bottom: 0.25rem;
+}
+
+.contact-success-banner p {
+  font-size: 0.9rem;
+  margin: 0;
+  opacity: 0.9;
+}
+
+.success-icon {
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Responsive adjustments ── */
+@media (max-width: 850px) {
+  .contact-card {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  .contact-info-side {
+    padding-right: 0;
+    border-right: none;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 2rem;
+  }
+}
+
+@media (max-width: 580px) {
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+  .contact-card {
+    padding: 1.5rem;
+  }
+}
+
+/* ==========================================================================
+   END CONTACT SECTION CSS
+   ========================================================================== */
